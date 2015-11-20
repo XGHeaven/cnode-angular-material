@@ -39,11 +39,11 @@ _cnode2.default.config(['$stateProvider', '$urlRouterProvider', '$locationProvid
 		absolute: true,
 		views: {
 			sider: {
-				templateUrl: './view/sider.html',
+				templateUrl: 'view/sider.html',
 				controller: 'SiderController'
 			},
 			main: {
-				templateUrl: './view/main.html',
+				templateUrl: 'view/main.html',
 				controller: 'MainController'
 			}
 		}
@@ -53,7 +53,7 @@ _cnode2.default.config(['$stateProvider', '$urlRouterProvider', '$locationProvid
 		template: '<div ui-view></div>'
 	}).state('main.list.all', {
 		url: '/{tab:all|good|share|ask|job}',
-		templateUrl: './view/list.html',
+		templateUrl: 'view/list.html',
 		controller: 'ListController'
 	});
 }]);
@@ -116,7 +116,7 @@ _cnode2.default.controller('ListController', ['$scope', '$mdDialog', '$state', '
 	$scope.showTopic = function (e, id) {
 		$mdDialog.show({
 			controller: 'TopicDialogController',
-			templateUrl: './view/dialog/detail.html',
+			templateUrl: 'view/dialog/detail.html',
 			parent: _angular2.default.element(document.body),
 			targetEvent: e,
 			clickOutsideToClose: true,
