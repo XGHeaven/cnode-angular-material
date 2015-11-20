@@ -1,0 +1,11 @@
+// div.sider(ng-controller="SiderController")
+md-sidenav.md-sidenav-left.md-whiteframe-z3.fixed(md-component-id="sider" md-is-locked-open="$mdMedia('gt-md')" flex)
+	md-toolbar.md-theme-indigo
+		h1.md-toolbar-tools CNode.JS
+	md-list(layout="column")
+		md-subheader News
+		md-list-item(ng-repeat="nav in navs")
+			md-button(ui-sref="main.list.all({tab:nav.tab})" flex) {{nav.title}}
+		md-subheader Others
+		md-list-item
+			md-button(href="" flex) 关于

@@ -1,0 +1,7 @@
+md-list
+	md-list-item(ng-repeat="item in items" ng-click="showTopic($event,item.id)")
+		img.md-avatar(ng-src="{{item.author.avatar_url}}")
+		md-list-item-text(layout="column")
+			h3 {{item.title}}
+			p {{item.author.loginname}}
+			

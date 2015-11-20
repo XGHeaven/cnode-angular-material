@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="cnode">
+<head>
+	<meta charset="UTF-8">
+	<title>CNode.js 中文社区 - Angular Material</title>
+	<meta name="keyword" content="node.js, nodejs, javascript, china">
+	<meta name="description" content="中文 Node.js 社区">
+	<meta name="viewport" content="width=device-width, initial-scale=1">	
+	<script src="./js/angular.min.js"></script>
+	<script src="./js/angular-sanitize.min.js"></script>
+	<script src="./js/angular-animate.min.js"></script>
+	<script src="./js/angular-aria.min.js"></script>
+	<script src="./js/angular-ui-router.min.js"></script>
+	<script src="./js/angular-material.min.js"></script>
+	<script src="./js/app.js"></script>
+	<link rel="stylesheet" href="./css/angular-material.min.css">
+	<link rel="stylesheet" href="./css/angular-material.layouts.min.css">
+	<link rel="stylesheet" href="./css/app.css">
+	<base href="/">
+</head>
+<body layout="row" ng-controller="RootController">
+	<div ui-view="sider" layout="column"></div>
+	<div ui-view="main" flex style="overflow:scroll"></div>
+</body>
+</html>

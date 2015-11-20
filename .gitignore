@@ -1,0 +1,6 @@
+node_modules/
+
+dist/
+
+# for vsc support es6
+jsconfig.json
