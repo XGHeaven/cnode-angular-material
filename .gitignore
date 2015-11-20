@@ -4,3 +4,6 @@ dist/
 
 # for vsc support es6
 jsconfig.json
+
+# for deploy
+.publish/

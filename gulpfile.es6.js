@@ -9,6 +9,7 @@ import concat from 'gulp-concat'
 import jade from 'gulp-jade'
 import es from 'event-stream'
 import rimraf from 'rimraf'
+import ghPages from 'gulp-gh-pages'
 
 const PRODUCTION = process.env.NODE_ENV && process.env.NODE_ENV.toLowerCase() === 'production';
 const DIST = './dist'
@@ -19,6 +20,7 @@ gulp.task('es6', () => {
     .pipe(browserify({
         transform: ['babelify', 'browserify-shim', 'require-globify'],
         debug: !PRODUCTION,
+        compress: PRODUCTION
         // bundleExternal: false
     }))
     .on('error', console.error.bind(console))
@@ -101,6 +103,10 @@ gulp.task('server', () => {
     })
     
     // gulp.watch(DIST, ['reload'])
+})
+
+gulp.task('deploy', ['build'], () => {
+    return gulp.src(DIST + '/**/*.*').pipe(ghPages())
 })
 
 gulp.task('default', ['clean', 'build', 'server', 'watch'])
