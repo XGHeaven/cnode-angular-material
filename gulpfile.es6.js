@@ -48,12 +48,13 @@ gulp.task('cdn', () => {
         'angular-aria/angular-aria',
         'angular-material/angular-material',
         'angular-ui-router/build/angular-ui-router',
-        'angular-sanitize/angular-sanitize'
+        'angular-sanitize/angular-sanitize',
+        'markdown-it/dist/markdown-it'
         ].map(addMin('.js'))
     const cssFiles = [
         'angular-material/angular-material',
         'angular-material/angular-material.layouts'
-        ].map(addMin('.css'))
+        ].map(addMin('.css')).concat(['./node_modules/highlight.js/styles/default.css'])
     
     gulp.src(jsFiles).pipe(gulp.dest(DIST + '/js/'))
     gulp.src(cssFiles).pipe(gulp.dest(DIST + '/css/'))

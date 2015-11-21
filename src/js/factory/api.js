@@ -6,13 +6,18 @@ cnode.factory('API', ['$http', '$q', ($http, $q) => {
 	function getTopics(tab = 'all') {
 		return $http.get(url + '/topics', {
 			params: {
-				tab
+				tab,
+				mdrender: false
 			}
 		})
 	}
 	
 	function getTopic(id) {
-		return $http.get(url + '/topic/' + id)
+		return $http.get(url + '/topic/' + id, {
+			params: {
+				mdrender: false
+			}
+		})
 	}
 	
 	return {
