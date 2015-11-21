@@ -31,4 +31,9 @@ cnode.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', ($sta
 		templateUrl: 'view/list.html',
 		controller: 'ListController'
 	})
+	.state('main.topic', {
+		url: '/topic/:id',
+		templateUrl: 'view/topic.html',
+		controller: 'TopicController'
+	})
 }])
