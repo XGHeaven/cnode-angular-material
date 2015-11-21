@@ -1,7 +1,7 @@
 md-toolbar
-	.md-toolbar-tools
-		span(ng-click="toggleSider()") TOGGLE
-		h1 Name
+	.md-toolbar-tools(layout="row")
+		md-button(ng-click="toggleSider()" hide-gt-md="true" flex="initial") TOGGLE
+		h1(flex="initial") Name
 
 md-content.md-padding(ui-view="")
 

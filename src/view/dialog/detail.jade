@@ -2,6 +2,11 @@ md-dialog(aria-label="{{label}}")
 	md-toolbar
 		.md-toolbar-tools
 			h3 {{title}}
+			span(flex)
+			md-button Max
+			md-button Reply
+			md-button(ng-click="close()") Close
+			
 	md-dialog-content
 		.md-dialog-content
 			p(ng-bind-html="content")
@@ -13,8 +18,3 @@ md-dialog(aria-label="{{label}}")
 				md-list-item-test(layout="column")
 					h6 {{reply.author.loginname}}
 					p(ng-bind-html="reply.content")
-	
-	.md-action(layout="row")
-		span(flex)
-		md-button Reply
-		md-button(ng-click="close()") Close
