@@ -12,9 +12,10 @@ md-dialog(aria-label="{{label}}")
 			p(ng-bind-html="content")
 		md-divider
 		md-list
-			md-list-item(ng-repeat="reply in replies")
+			md-subheader.md-no-sticky Replies
+			md-list-item.md-3-line.md-long-text(ng-repeat="reply in replies")
 				md-divider
 				img.md-avatar(ng-src="{{reply.author.avatar_url}}")
-				md-list-item-test(layout="column")
-					h6 {{reply.author.loginname}}
-					p(ng-bind-html="reply.content")
+				.md-list-item-text(layout="column")
+					span {{reply.author.loginname}}
+					span(ng-bind-html="reply.content")
