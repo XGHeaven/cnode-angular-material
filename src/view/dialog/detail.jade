@@ -3,8 +3,6 @@ md-dialog(aria-label="{{label}}")
 		.md-toolbar-tools
 			h3 {{title}}
 			span(flex)
-			md-button
-				i.fa.fa-reply
 			md-button.md-icon-button(ng-click="gotoTopic()")
 				i.fa.fa-expand
 			md-button.md-icon-button(ng-click="close()")
@@ -22,3 +20,6 @@ md-dialog(aria-label="{{label}}")
 				.md-list-item-text(layout="column")
 					span {{reply.author.loginname}}
 					span(ng-bind-html="reply.content")
+
+	md-button.md-fab.md-fab-bottom-right
+		i.fa.fa-reply
