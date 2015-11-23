@@ -1,1 +1,12 @@
-body,html{height:100%;width:100%}md-dialog img,md-content img,md-list img{max-width:100%}
+body,
+html {
+  height: 100%;
+  width: 100%;
+}
+md-dialog img,
+md-content img,
+md-list img {
+  max-width: 100%;
+}
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImJhc2Uuc3R5bCIsImFwcC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7O0VBQ0MsYUFBQTtFQUNBLFlBQUE7Q0NFQTtBRENBOzs7RUFDQyxnQkFBQTtDQ0dEIiwiZmlsZSI6ImFwcC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJib2R5LCBodG1sXG5cdGhlaWdodCAxMDAlXG5cdHdpZHRoIDEwMCVcblx0XG5tZC1kaWFsb2csIG1kLWNvbnRlbnQsIG1kLWxpc3Rcblx0aW1nXG5cdFx0bWF4LXdpZHRoIDEwMCUiLCJib2R5LFxuaHRtbCB7XG4gIGhlaWdodDogMTAwJTtcbiAgd2lkdGg6IDEwMCU7XG59XG5tZC1kaWFsb2cgaW1nLFxubWQtY29udGVudCBpbWcsXG5tZC1saXN0IGltZyB7XG4gIG1heC13aWR0aDogMTAwJTtcbn1cbiJdLCJzb3VyY2VSb290IjoiL3NvdXJjZS8ifQ== */
