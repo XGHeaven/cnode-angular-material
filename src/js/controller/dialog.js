@@ -1,5 +1,6 @@
 import cnode from '../cnode'
 import md from '../utils/md'
+import angular from 'angular'
 
 cnode.controller('TopicDialogController', ['$scope', '$mdDialog', 'API', 'TopicID', '$state', ($scope, $mdDialog, API, id, $state) => {
 	$scope.gotoTopic = () => {
@@ -14,7 +15,7 @@ cnode.controller('TopicDialogController', ['$scope', '$mdDialog', 'API', 'TopicI
 			reply.content = md.render(reply.content)
 		})
 		
-		Object.assign($scope, data.data)
+		angular.extend($scope, data.data)
 	})
 	
 	$scope.close = () => {

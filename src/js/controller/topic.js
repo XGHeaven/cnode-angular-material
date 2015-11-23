@@ -1,5 +1,6 @@
 import cnode from '../cnode'
 import md from '../utils/md'
+import angular from 'angular'
 
 cnode.controller('TopicController', ['$scope', 'API', '$state', ($scope, API, $state) => {
 	API.getTopic($state.params.id).success(data => {
@@ -8,7 +9,7 @@ cnode.controller('TopicController', ['$scope', 'API', '$state', ($scope, API, $s
 		data.data.replies.forEach(reply => {
 			reply.content = md.render(reply.content)
 		})
-		
-		Object.assign($scope, data.data)
+
+		angular.extend($scope, data.data)
 	})
 }])
