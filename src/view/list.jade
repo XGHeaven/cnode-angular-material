@@ -3,6 +3,5 @@ md-list
 		img.md-avatar(ng-src="{{item.author.avatar_url}}")
 		.md-list-item-text(layout="column")
 			span {{item.title}}
-			span {{item.author.loginname}}
+			span {{item.author.loginname}} {{item.create_at | date:'yyyy-MM-dd hh:mm:ss'}} Last Reply: {{item.last_reply_at | date: 'shortTime'}}
 		md-divider
-			

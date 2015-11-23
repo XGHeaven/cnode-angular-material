@@ -1,0 +1,26 @@
+md-tabs.md-primary(md-dynamic-height)
+	md-tab(label="这是啥")
+		md-content.md-padding
+			h2 这是我个人兴趣写的一个页面
+			p 目的就是可以取代CNode原本的那个很一般而且旁边都是广告的页面
+			p 主要是使用 Angular Material
+			p 犹豫我个人审美有问题，所以可能不是很好看
+	md-tab(label="你喜欢么？")
+		md-content.md-padding
+			h2 如果你喜欢的话，那么就赶紧加入我们
+			p 虽然现在只有我一个人。。。
+			p 点击下面的github网址进入
+			md-button(href="https://github.com/XGHeaven/cnode-angular-material")
+				i.fa.fa-github
+				| GitHub
+	md-tab(label="上榜者")
+		md-content.md-padding
+			md-list
+				md-subheader Maintainer
+				md-list-item
+					img.md-avatar(src="https://avatars.githubusercontent.com/u/9291212?v=3&s=120")
+					.md-list-item-text(layout="column")
+						p XGHeaven
+				md-subheader Contributor
+				md-list-item
+					p None
