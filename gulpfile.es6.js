@@ -10,6 +10,8 @@ import jade from 'gulp-jade'
 import es from 'event-stream'
 import rimraf from 'rimraf'
 import ghPages from 'gulp-gh-pages'
+import autoprefixer from 'gulp-autoprefixer'
+import sourcemaps from 'gulp-sourcemaps'
 
 const PRODUCTION = process.env.NODE_ENV && process.env.NODE_ENV.toLowerCase() === 'production';
 const DIST = './dist'
@@ -35,8 +37,13 @@ gulp.task('stylus', () => {
     }
     
     return gulp.src('./src/stylus/**/*.styl')
+    .pipe(sourcemaps.init())
     .pipe(stylus(opts))
     .pipe(concat('app.css'))
+    .pipe(autoprefixer({
+        browsers: 'last 2 versions'
+    }))
+    .pipe(sourcemaps.write())
     .pipe(gulp.dest('./dist/css/'))
     .pipe(browserSync.stream())
 })
