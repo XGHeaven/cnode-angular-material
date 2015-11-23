@@ -53,11 +53,19 @@ gulp.task('cdn', () => {
         ].map(addMin('.js'))
     const cssFiles = [
         'angular-material/angular-material',
-        'angular-material/angular-material.layouts'
+        'angular-material/angular-material.layouts',
+        'bootstrap/dist/css/bootstrap',
+        'font-awesome/css/font-awesome'
         ].map(addMin('.css')).concat(['./node_modules/highlight.js/styles/default.css'])
+
+    const fontFiles = [
+        'bootstrap/dist/fonts/*.*',
+        'font-awesome/fonts/*.*'
+    ].map(f => './node_modules/' + f)
     
     gulp.src(jsFiles).pipe(gulp.dest(DIST + '/js/'))
     gulp.src(cssFiles).pipe(gulp.dest(DIST + '/css/'))
+    gulp.src(fontFiles).pipe(gulp.dest(DIST + '/fonts/'))
     
     function addMin(suffix) {
         return function(file) {
