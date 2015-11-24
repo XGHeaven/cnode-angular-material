@@ -8,7 +8,7 @@ md-dialog(aria-label="{{label}}")
 			md-button.md-icon-button(ng-click="close()")
 				i.fa.fa-close
 			
-	md-dialog-content
+	md-dialog-content.md-padding(ng-include="'view/topic.html'")
 		.md-dialog-content
 			p(ng-bind-html="content")
 		md-divider
@@ -21,5 +21,5 @@ md-dialog(aria-label="{{label}}")
 					span {{reply.author.loginname}}
 					span(ng-bind-html="reply.content")
 
-	md-button.md-fab.md-fab-bottom-right
+	//- md-button.md-fab.md-fab-bottom-right
 		i.fa.fa-reply

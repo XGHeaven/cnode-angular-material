@@ -1,9 +1,26 @@
-md-content
-	p(ng-bind-html="content")
-	
-md-divider
-
 md-list
+	md-subheader Author
+	md-list-item.md-3-line
+		img.md-avatar(src="{{author.avatar_url}}")
+		.md-list-item-text
+			div Create At {{create_at | date: 'yyyy-MM-dd hh:mm:ss'}}
+			div Last Reply At {{last_reply_at | date: 'shortTime'}}
+			div Reply Count: {{reply_count}} , Visit Count: {{visit_count}}
+	md-divider
+
+	md-subheader Tags
+	md-list-item
+		md-chips
+			md-chip {{tab}}
+			md-chip(ng-show="good") Good
+			md-chip(ng-show="top") Top
+
+	md-subheader Content
+	md-list-item
+		md-content
+			p(ng-bind-html="content")
+	md-divider
+
 	md-subheader.md-no-sticky Replies
 	md-list-item.md-3-line.md-long-text(ng-repeat="reply in replies")
 		img.md-avatar(ng-src="{{reply.author.avatar_url}}")
