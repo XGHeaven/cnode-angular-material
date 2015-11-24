@@ -12,6 +12,7 @@ import rimraf from 'rimraf'
 import ghPages from 'gulp-gh-pages'
 import autoprefixer from 'gulp-autoprefixer'
 import sourcemaps from 'gulp-sourcemaps'
+import imagemin from 'gulp-imagemin'
 
 const PRODUCTION = process.env.NODE_ENV && process.env.NODE_ENV.toLowerCase() === 'production';
 const DIST = './dist'
@@ -46,6 +47,14 @@ gulp.task('stylus', () => {
     }))
     .pipe(gulp.dest('./dist/css/'))
     .pipe(browserSync.stream())
+})
+
+gulp.task('image', () => {
+    return gulp.src('./src/image/**/*.*')
+    .pipe(imagemin({
+        progressive: true
+    }))
+    .pipe(gulp.dest(DIST + '/image'))
 })
 
 gulp.task('cdn', () => {
@@ -95,12 +104,13 @@ gulp.task('view', () => {
     .pipe(browserSync.stream())
 })
 
-gulp.task('build', ['clean', 'es6', 'stylus', 'view', 'cdn'])
+gulp.task('build', ['clean', 'es6', 'stylus', 'view', 'cdn', 'image'])
 
 gulp.task('watch', () => {
     gulp.watch('./src/js/**/*.js', ['es6'])
     gulp.watch('./src/stylus/**/*.styl', ['stylus'])
     gulp.watch(['./src/**/*.html', './src/**/*.jade'], ['view'])
+    gulp.watch('./src/image/', ['image'])
 })
 
 gulp.task('reload', () => {
