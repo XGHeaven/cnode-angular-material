@@ -39,11 +39,11 @@ gulp.task('stylus', () => {
     return gulp.src('./src/stylus/**/*.styl')
     .pipe(sourcemaps.init())
     .pipe(stylus(opts))
+    .pipe(sourcemaps.write())
     .pipe(concat('app.css'))
     .pipe(autoprefixer({
         browsers: 'last 2 versions'
     }))
-    .pipe(sourcemaps.write())
     .pipe(gulp.dest('./dist/css/'))
     .pipe(browserSync.stream())
 })

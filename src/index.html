@@ -16,9 +16,14 @@
 	<link rel="stylesheet" href="./css/app.css">
 	<!--<base href="/dist/">-->
 </head>
-<body layout="row" ng-controller="RootController">
-	<div ui-view="sider" layout="column"></div>
-	<div ui-view="main" flex style="overflow:scroll"></div>
+<body layout="column" ng-controller="RootController">
+	<div class="loading-bar">
+		<md-progress-linear ng-mode="query" ng-show="loading" class="md-primary md-hue-3"></md-progress-linear>
+	</div>
+	<div flex layout="row">
+		<div ui-view="sider" layout="column"></div>
+		<div ui-view="main" flex style="overflow:scroll"></div>
+	</div>
 	
 	<!-- DEP -->
 	<script src="./js/angular.min.js"></script>
