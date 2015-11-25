@@ -5,7 +5,8 @@ let cnode = angular.module('cnode', [
 	'ui.router',
 	'ngMaterial',
 	'ngSanitize',
-	'ngMessages'
+	'ngMessages',
+	'ngStorage'
 ])
 
 export default cnode

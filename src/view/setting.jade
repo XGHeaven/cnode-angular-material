@@ -5,9 +5,10 @@ form(name="settingForm")
 				label AccessToken
 				input(
 					name="accessToken"
-					ng-model="user.accessToken"
+					ng-model="setting.accessToken"
 					ng-pattern="/^[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}$/i"
 					md-maxlength="36"
+					required
 				)
 				div(ng-messages="settingForm.accessToken.$error")
 					div(ng-message="md-maxlength") 您输入的内容过多，请重新输入
