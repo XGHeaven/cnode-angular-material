@@ -60,9 +60,15 @@ cnode.factory('User', ['$http', '$q', '$rootScope', '$localStorage', '$mdToast',
 		$mdToast.show($mdToast.simple(string).position('top left').hideDelay(delay))
 	}
 
+	function clear() {
+		$rootScope.CNSetting = $localStorage.setting = setting = {}
+		$rootScope.CNUser = $localStorage.user = user  = {}
+	}
+
 	return {
 		saveSetting,
 		updateUser,
-		getSetting
+		getSetting,
+		clear,
 	}
 }])
