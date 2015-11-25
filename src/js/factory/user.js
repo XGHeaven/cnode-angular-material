@@ -30,7 +30,7 @@ cnode.factory('User', ['$http', '$q', '$rootScope', '$localStorage', '$mdToast',
 			}
 			return $q.reject(new Error('invalid AccessToken'))
 		}).then(() => {
-			_userUpdated()
+			_userUpdated(3000)
 			defer.resolve(user)
 		}).catch((err) => {
 			_userUpdatedError()
@@ -44,16 +44,16 @@ cnode.factory('User', ['$http', '$q', '$rootScope', '$localStorage', '$mdToast',
 		return setting = $localStorage.setting;
 	}
 
-	function _userUpdating() {
-		_show('updating user...')
+	function _userUpdating(...args) {
+		_show('updating user...', ...args)
 	}
 
-	function _userUpdated() {
-		_show('updated user...')
+	function _userUpdated(...args) {
+		_show('updated user...', ...args)
 	}
 
-	function _userUpdatedError() {
-		_show('updated user error!')
+	function _userUpdatedError(...args) {
+		_show('updated user error!', ...args)
 	}
 
 	function _show(string, delay=1000) {
