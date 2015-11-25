@@ -67,6 +67,7 @@ gulp.task('cdn', () => {
         'angular-material/angular-material',
         'angular-ui-router/build/angular-ui-router',
         'angular-sanitize/angular-sanitize',
+        'angular-messages/angular-messages',
         'marked/marked'
         ].map(addMin('.js'))
     const cssFiles = [

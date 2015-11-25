@@ -1,0 +1,18 @@
+form(name="settingForm")
+	md-list(ng-clock)
+		md-list-item
+			md-input-container(flex="")
+				label AccessToken
+				input(
+					name="accessToken"
+					ng-model="user.accessToken"
+					ng-pattern="/^[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}$/i"
+					md-maxlength="36"
+				)
+				div(ng-messages="settingForm.accessToken.$error")
+					div(ng-message="md-maxlength") 您输入的内容过多，请重新输入
+					div(ng-message="pattern") AccessToken格式错误，请重新输入
+		md-divider
+		md-list-item
+			md-button(ng-click="save()").md-primary Save
+			md-button.md-warn Cancel
