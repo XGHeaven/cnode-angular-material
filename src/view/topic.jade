@@ -14,10 +14,11 @@ md-list
 			md-chip {{tab}}
 			md-chip(ng-show="good") Good
 			md-chip(ng-show="top") Top
+	md-divider
 
 	md-subheader Content
 	md-list-item
-		md-content
+		md-content.cn-content
 			p(ng-bind-html="content")
 	md-divider
 
@@ -26,5 +27,5 @@ md-list
 		img.md-avatar(ng-src="{{reply.author.avatar_url}}")
 		.md-list-item-text
 			span {{reply.author.loginname}}
-			span(ng-bind-html="reply.content")
+			span.cn-content(ng-bind-html="reply.content")
 		md-divider

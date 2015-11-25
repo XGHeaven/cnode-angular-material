@@ -4,6 +4,7 @@ import angular from 'angular'
 
 cnode.controller('TopicController', ['$scope', 'API', '$state', ($scope, API, $state) => {
 	API.getTopic($state.params.id).success(data => {
+		console.log(data.data.content)
 		data.data.content = md.render(data.data.content)
 		
 		data.data.replies.forEach(reply => {

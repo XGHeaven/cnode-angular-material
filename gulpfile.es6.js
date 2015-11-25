@@ -13,6 +13,7 @@ import ghPages from 'gulp-gh-pages'
 import autoprefixer from 'gulp-autoprefixer'
 import sourcemaps from 'gulp-sourcemaps'
 import imagemin from 'gulp-imagemin'
+import watch from 'gulp-watch'
 
 const PRODUCTION = process.env.NODE_ENV && process.env.NODE_ENV.toLowerCase() === 'production';
 const DIST = './dist'
@@ -36,12 +37,13 @@ gulp.task('stylus', () => {
     let opts = {
         compress: PRODUCTION
     }
-    
-    return gulp.src('./src/stylus/**/*.styl')
-    .pipe(sourcemaps.init())
-    .pipe(stylus(opts))
-    .pipe(sourcemaps.write())
-    .pipe(concat('app.css'))
+
+    let source = gulp.src('./src/stylus/**/*.styl');
+
+    if (!PRODUCTION) source = source.pipe(sourcemaps.init())
+    source = source.pipe(stylus(opts))
+    if (!PRODUCTION) source = source.pipe(sourcemaps.write())
+    return source.pipe(concat('app.css'))
     .pipe(autoprefixer({
         browsers: 'last 2 versions'
     }))
@@ -65,7 +67,7 @@ gulp.task('cdn', () => {
         'angular-material/angular-material',
         'angular-ui-router/build/angular-ui-router',
         'angular-sanitize/angular-sanitize',
-        'markdown-it/dist/markdown-it'
+        'marked/marked'
         ].map(addMin('.js'))
     const cssFiles = [
         'angular-material/angular-material',
@@ -107,10 +109,10 @@ gulp.task('view', () => {
 gulp.task('build', ['clean', 'es6', 'stylus', 'view', 'cdn', 'image'])
 
 gulp.task('watch', () => {
-    gulp.watch('./src/js/**/*.js', ['es6'])
-    gulp.watch('./src/stylus/**/*.styl', ['stylus'])
-    gulp.watch(['./src/**/*.html', './src/**/*.jade'], ['view'])
-    gulp.watch('./src/image/', ['image'])
+    watch('./src/js/**/*.js', () => gulp.run(['es6']))
+    watch('./src/stylus/**/*.styl', () => gulp.run(['stylus']))
+    watch(['./src/*.html', './src/**/*.jade'], () => gulp.run(['view']))
+    watch('./src/image/**/=', () => gulp.run(['image']))
 })
 
 gulp.task('reload', () => {
