@@ -1,7 +1,12 @@
 md-list
-	md-list-item.md-2-line(ng-repeat="item in items" ng-click="showTopic($event,item.id)")
-		img.md-avatar(ng-src="{{item.author.avatar_url}}")
+	md-list-item.md-3-line(ng-repeat="item in items" ng-click="showTopic($event,item.id)" ng-class="{'md-whiteframe-z2': item.good}")
+		img.md-avatar(ng-src="{{item.author.avatar_url}}" ng-class="{'cn-avatar-top': item.top, 'cn-avatar-good':item.good}")
 		.md-list-item-text(layout="column")
-			span {{item.title}}
-			span {{item.author.loginname}} {{item.create_at | date:'yyyy-MM-dd hh:mm:ss'}} Last Reply: {{item.last_reply_at | date: 'shortTime'}}
+			span.cn-list-header
+				cn-label(cn-tab="item.tab")
+				| {{item.title}}
+			span {{item.author.loginname}} 发布于 {{item.create_at | diffDate}}
+			span(layout="row" layout-align="center center")
+				span(flex) {{item.last_reply_at | diffDate}}
+				span.label.label-default.cn-label-reply {{item.reply_count}} / {{item.visit_count}}
 		md-divider
