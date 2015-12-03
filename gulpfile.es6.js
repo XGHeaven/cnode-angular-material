@@ -14,21 +14,23 @@ import autoprefixer from 'gulp-autoprefixer'
 import sourcemaps from 'gulp-sourcemaps'
 import imagemin from 'gulp-imagemin'
 import watch from 'gulp-watch'
+import uglify from 'gulp-uglify'
 
 const PRODUCTION = process.env.NODE_ENV && process.env.NODE_ENV.toLowerCase() === 'production';
 const DIST = './dist'
 
 gulp.task('es6', () => {
-    return gulp
+    let stream = gulp
     .src('./src/js/main.js')
     .pipe(browserify({
         transform: ['babelify', 'browserify-shim', 'require-globify'],
-        debug: !PRODUCTION,
-        compress: PRODUCTION
-        // bundleExternal: false
+        debug: !PRODUCTION
     }))
     .on('error', console.error.bind(console))
-    .pipe(rename('app.js'))
+
+    if (PRODUCTION) stream = stream.pipe(uglify())
+
+    return stream.pipe(rename('app.js'))
     .pipe(gulp.dest( DIST + '/js/'))
     .pipe(browserSync.stream())
 })
