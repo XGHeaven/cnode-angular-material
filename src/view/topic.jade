@@ -29,7 +29,7 @@ md-list
 			span {{reply.author.loginname}}
 			span.cn-content(ng-bind-html="reply.content")
 		div(layout="column")
-			md-button.md-icon-button(ng-class="{stared:reply.ups.indexOf(CNUser.id) !== -1}" ng-click="star(reply)")
+			md-button.md-icon-button(ng-class="{stared:reply.ups.indexOf(CNUser.id) !== -1}" ng-click="star(reply)" ng-disabled="reply.author.loginname === CNUser.loginname")
 				md-tooltip(md-direction="left") {{reply.ups.length}} Stared
 				i.fa.fa-star
 			md-button.md-icon-button

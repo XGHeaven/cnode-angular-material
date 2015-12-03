@@ -1,7 +1,7 @@
 md-dialog(aria-label="{{label}}")
 	md-toolbar
 		.md-toolbar-tools
-			h3 {{title}}
+			h3 {{title ? title : '加载中...'}}
 			span(flex)
 			md-button.md-icon-button(ng-click="gotoTopic()")
 				i.fa.fa-expand
