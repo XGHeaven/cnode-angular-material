@@ -23,8 +23,10 @@ cnode.factory('User', ['$http', '$q', '$rootScope', '$localStorage', '$mdToast',
 			accesstoken: setting.accessToken
 		}).success((data) => {
 			if (data.success) {
+				let id = data.id
 				return $http.get('https://cnodejs.org/api/v1/user/' + data.loginname)
 				.success((data) => {
+					data.data.id = id
 					saveUser(data.data)
 				})
 			}
@@ -65,10 +67,18 @@ cnode.factory('User', ['$http', '$q', '$rootScope', '$localStorage', '$mdToast',
 		$rootScope.CNUser = $localStorage.user = user  = {}
 	}
 
+	function isLogin() {
+		return !!user.id
+	}
+
 	return {
 		saveSetting,
 		updateUser,
 		getSetting,
 		clear,
+		isLogin,
+		get user() {
+			return user
+		}
 	}
 }])

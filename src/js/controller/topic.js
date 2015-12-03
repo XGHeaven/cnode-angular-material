@@ -2,9 +2,8 @@ import cnode from '../cnode'
 import md from '../utils/md'
 import angular from 'angular'
 
-cnode.controller('TopicController', ['$scope', 'API', '$state', ($scope, API, $state) => {
+cnode.controller('TopicController', ['$scope', 'API', '$state', 'User', ($scope, API, $state, User) => {
 	API.getTopic($state.params.id).success(data => {
-		console.log(data.data.content)
 		data.data.content = md.render(data.data.content)
 		
 		data.data.replies.forEach(reply => {
@@ -13,4 +12,10 @@ cnode.controller('TopicController', ['$scope', 'API', '$state', ($scope, API, $s
 
 		angular.extend($scope, data.data)
 	})
+
+	$scope.star = (reply) => {
+		API.postLike(reply.id).success(data => {
+			reply.ups.push(User.user.id)
+		})
+	}
 }])
