@@ -1,6 +1,6 @@
 import cnode from '../cnode'
 
-cnode.factory('User', ['$http', '$q', '$rootScope', '$localStorage', '$mdToast', ($http, $q, $rootScope, $localStorage, $mdToast) => {
+cnode.factory('User', ['$http', '$q', '$rootScope', '$localStorage', 'Msgbox', ($http, $q, $rootScope, $localStorage, Msgbox) => {
 	let setting = $localStorage.setting || {}
 	let user = $localStorage.user || {}
 
@@ -35,7 +35,7 @@ cnode.factory('User', ['$http', '$q', '$rootScope', '$localStorage', '$mdToast',
 			_userUpdated(3000)
 			defer.resolve(user)
 		}).catch((err) => {
-			_userUpdatedError()
+			_userUpdatedError(3000)
 			defer.reject(err)
 		})
 
@@ -47,19 +47,15 @@ cnode.factory('User', ['$http', '$q', '$rootScope', '$localStorage', '$mdToast',
 	}
 
 	function _userUpdating(...args) {
-		_show('updating user...', ...args)
+		Msgbox.alert('正在获取您的贵姓，贵庚...', ...args)
 	}
 
 	function _userUpdated(...args) {
-		_show('updated user...', ...args)
+		Msgbox.alert('登录成功，您可以使用了...', ...args)
 	}
 
 	function _userUpdatedError(...args) {
-		_show('updated user error!', ...args)
-	}
-
-	function _show(string, delay=1000) {
-		$mdToast.show($mdToast.simple(string).position('top left').hideDelay(delay))
+		Msgbox.alert('请您确认一下输入的东西是否正确，我被服务器拒绝了，-_-||', ...args)
 	}
 
 	function clear() {

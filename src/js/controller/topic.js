@@ -14,7 +14,7 @@ cnode.controller('TopicController', ['$scope', 'API', '$state', 'User', ($scope,
 	})
 
 	$scope.star = (reply) => {
-		API.postLike(reply.id).success(data => {
+		API.postUps(reply.id).then(data => {
 			reply.ups.push(User.user.id)
 		})
 	}

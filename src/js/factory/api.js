@@ -1,8 +1,8 @@
 import cnode from '../cnode'
 
-cnode.factory('API', ['$http', '$q', '$mdToast', 'tabName', 'User', ($http, $q, $mdToast, tabName, User) => {
+cnode.factory('API', ['$http', '$q', 'tabName', 'User', 'Msgbox', ($http, $q, tabName, User, Msgbox) => {
 	const url = 'https://cnodejs.org/api/v1'
-	
+
 	function getTopics(tab = 'all') {
 		return $http.get(url + '/topics', {
 			params: {
@@ -20,23 +20,23 @@ cnode.factory('API', ['$http', '$q', '$mdToast', 'tabName', 'User', ($http, $q, 
 		})
 	}
 
-	function postLike(replyId) {
+	function postUps(replyId) {
 		if (User.isLogin()) {
 			return $http.post(`${url}/reply/${replyId}/ups`, {
 				accesstoken: User.getSetting().accessToken
+			}).success(data => {
+				Msgbox.alert('点赞成功')
+				return data
 			})
 		} else {
-			show('need login in, to `Setting` set accesstoken')
+			Msgbox.alert('需要登录，请您在左侧内选择`设置`并输入您的 AccessToken', 5000)
+			return $q.reject()
 		}
-	}
-
-	function show(string, delay=2000) {
-		$mdToast.show($mdToast.simple(string).position('top left').hideDelay(delay))
 	}
 
 	return {
 		getTopics,
 		getTopic,
-		postLike
+		postUps
 	}
 }])
