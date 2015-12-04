@@ -28,7 +28,24 @@ md-list
 			md-button.md-icon-button(ng-class="{stared:reply.ups.indexOf(CNUser.id) !== -1}" ng-click="star(reply)" ng-disabled="reply.author.loginname === CNUser.loginname")
 				md-tooltip(md-direction="left") {{reply.ups.length}} Stared
 				i.fa.fa-star
-			md-button.md-icon-button
+			md-button(ng-click="replyTo(reply)").md-icon-button
 				md-tooltip(md-direction="left") Reply
 				i.fa.fa-reply
 		md-divider
+
+	md-subheader.md-no-sticky Reply
+	md-list-item(ng-if="!!replyFor")
+		md-button(ng-click="removeReplyFor()")
+			| 回复给 
+			| {{replyFor.author.loginname}} 
+			i (点击删除)
+	md-list-item(ng-if="replyPreview === false")
+		md-input-container(flex)
+			label Reply Text Here (Support Markdown)
+			textarea#replyText(ng-model="$parent.replyText")
+	md-list-item(ng-if="replyPreview === true")
+		md-content.cn-content
+			span(ng-bind-html="$parent.replyText | Markdown")
+	md-list-item
+		md-button(type="button" ng-click="togglePreview()") 预览
+		md-button.md-accent(type="button" ng-click="submit()") 提交
