@@ -15,7 +15,7 @@ md-list
 	md-subheader Content
 	md-list-item
 		md-content.cn-content
-			p(ng-bind-html="content")
+			p(ng-bind-html="content | Markdown")
 	md-divider
 
 	md-subheader.md-no-sticky Replies
@@ -23,7 +23,7 @@ md-list
 		img.md-avatar(ng-src="{{reply.author.avatar_url}}")
 		.md-list-item-text
 			span {{reply.author.loginname}}
-			span.cn-content(ng-bind-html="reply.content")
+			span.cn-content(ng-bind-html="reply.content | Markdown")
 		div(layout="column")
 			md-button.md-icon-button(ng-class="{stared:reply.ups.indexOf(CNUser.id) !== -1}" ng-click="star(reply)" ng-disabled="reply.author.loginname === CNUser.loginname")
 				md-tooltip(md-direction="left") {{reply.ups.length}} Stared
