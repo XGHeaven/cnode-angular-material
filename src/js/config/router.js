@@ -36,6 +36,11 @@ cnode.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', ($sta
 		templateUrl: 'view/topic.html',
 		controller: 'TopicController'
 	})
+	.state('main.create', {
+		url: '/create',
+		templateUrl: 'view/create.html',
+		controller: 'CreateController'
+	})
 	.state('main.about', {
 		url: '/about',
 		templateUrl: 'view/about.html',

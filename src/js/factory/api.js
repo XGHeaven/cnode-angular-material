@@ -55,10 +55,29 @@ cnode.factory('API', ['$http', '$q', 'tabName', 'User', 'Msgbox', ($http, $q, ta
 		})
 	})
 
+	const postTopic = needLogin(function postTopic(tab, title, content) {
+		return $http.post(`${url}/topics`, {
+			tab, title, content,
+			accesstoken: User.getSetting().accessToken
+		}).then(res => {
+			if (res.data.success) {
+				Msgbox.alert('发表成功')
+				return res
+			} else {
+				Msgbox.alert('发表失败')
+				return $q.reject(res)
+			}
+		}, res => {
+			Msgbox.alert(res.data.error_msg)
+			return $q.reject(res)
+		})
+	})
+
 	return {
 		getTopics,
 		getTopic,
 		postUps,
-		postTopicReply
+		postTopicReply,
+		postTopic
 	}
 }])

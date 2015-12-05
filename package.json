@@ -30,6 +30,7 @@
     "browserify-shim": "^3.8.11",
     "event-stream": "^3.3.2",
     "gulp": "^3.9.0",
+    "gulp-angular-injector": "^1.0.0",
     "gulp-autoprefixer": "^3.1.0",
     "gulp-browserify": "^0.5.1",
     "gulp-concat": "^2.6.0",
@@ -46,7 +47,8 @@
   "babel": {
     "presets": [
       "es2015"
-    ]
+    ],
+    "comments": false
   },
   "browserify-shim": {
     "angular": "global:angular",

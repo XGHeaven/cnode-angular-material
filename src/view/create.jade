@@ -1,0 +1,24 @@
+form(name="createForm")
+	md-input-container
+		label 请选择模块
+		md-select(ng-model="tab" required)
+			md-option(ng-repeat="tab in tabs" value="{{tab[0]}}")
+				| {{tab[1]}}
+
+	md-input-container
+		label 标题，在10字以上
+		input(ng-model="title" name="title" ng-pattern="/^.{10,}$/" pattern="^.{10,}$" required)
+		div(ng-messages="createForm.title.$error")
+			div(ng-message="pattern") 字数请多余十个字
+
+	md-input-container(ng-if="!preview")
+		label 文章内容
+		textarea(ng-model="$parent.content" required)
+
+	md-content(ng-if="preview")
+		md-subheader 预览
+		span(ng-bind-html="$parent.content | Markdown")
+		md-divider
+
+	md-button(type="button" ng-click="togglePreview()") 预览
+	md-button(type="submit" ng-submit="submit()") 提交

@@ -15,6 +15,7 @@ import sourcemaps from 'gulp-sourcemaps'
 import imagemin from 'gulp-imagemin'
 import watch from 'gulp-watch'
 import uglify from 'gulp-uglify'
+import angularInjector from 'gulp-angular-injector'
 
 const PRODUCTION = process.env.NODE_ENV && process.env.NODE_ENV.toLowerCase() === 'production';
 const DIST = './dist'
@@ -27,6 +28,9 @@ gulp.task('es6', () => {
         debug: !PRODUCTION
     }))
     .on('error', console.error.bind(console))
+    .pipe(angularInjector({
+        token: 'ƒ'
+    }))
 
     if (PRODUCTION) stream = stream.pipe(uglify())
 

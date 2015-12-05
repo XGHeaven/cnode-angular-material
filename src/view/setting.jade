@@ -15,5 +15,5 @@ form(name="settingForm")
 					div(ng-message="pattern") AccessToken格式错误，请重新输入
 		md-divider
 		md-list-item
-			md-button(ng-click="save()").md-primary Save
-			md-button.md-warn Cancel
+			md-button(type="submit" ng-submit="save()").md-primary Save
+			md-button.md-warn(type="button") Cancel
