@@ -8,7 +8,7 @@ md-dialog(aria-label="{{label}}")
 			md-button.md-icon-button(ng-click="close()")
 				i.fa.fa-close
 			
-	md-dialog-content.md-padding(ng-include="'view/topic.html'" ng-controller="TopicController")
+	md-dialog-content.md-padding(static-include="view/topic.html" ng-controller="TopicController")
 		.md-dialog-content
 			p(ng-bind-html="content")
 		md-divider
