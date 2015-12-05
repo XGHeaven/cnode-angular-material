@@ -5,10 +5,11 @@ md-sidenav.md-sidenav-left.md-whiteframe-z3.fixed(md-component-id="sider" md-is-
 	div.sider-header(flex layout="column" layout-align="space-around center")
 		img.cn-avatar(src="{{CNUser.avatar_url ? CNUser.avatar_url : './image/unloginin.jpg'}}")
 		span.cn-name {{CNUser.loginname ? CNUser.loginname : 'Un Login in'}}
-	md-list(layout="column")
+	md-list(layout="column" ng-click="toggleSider()")
 		md-subheader News
 		md-list-item(ng-repeat="nav in navs")
-			md-button(ui-sref="main.list.all({tab:nav.tab})" flex) {{nav.title}}
+			md-button(ui-sref="main.list({tab:nav.tab})" flex)
+				| {{nav.title}}
 		md-subheader Others
 		md-list-item
 			md-button(ui-sref="main.about" flex) 关于

@@ -1,6 +1,6 @@
 import cnode from '../cnode'
 
-cnode.controller('SiderController', ['$scope', ($scope) => {
+cnode.controller('SiderController', ƒ(($scope) => {
 	$scope.navs = [{
 		title: '全部',
 		tab: 'all'
@@ -17,4 +17,4 @@ cnode.controller('SiderController', ['$scope', ($scope) => {
 		title: '招聘',
 		tab: 'job'
 	}]
-}])
+}))

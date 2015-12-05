@@ -1,7 +1,9 @@
 import cnode from '../cnode'
 
-cnode.controller('RootController', ['$rootScope', '$mdSidenav', 'User', ($rootScope, $mdSidenav, User) => {
+cnode.controller('RootController', ƒ(($rootScope, $mdSidenav, User, $mdMedia) => {
 	$rootScope.toggleSider = () => {
+		if ($mdMedia('gt-md')) { return }
+
 		$mdSidenav('sider')
 		.toggle()
 		.then(() => {})
@@ -11,4 +13,4 @@ cnode.controller('RootController', ['$rootScope', '$mdSidenav', 'User', ($rootSc
 	$rootScope.logout = () => {
 		User.clear()
 	}
-}])
+}))

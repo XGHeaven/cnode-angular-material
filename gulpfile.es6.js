@@ -27,7 +27,7 @@ gulp.task('es6', () => {
         transform: ['babelify', 'browserify-shim', 'require-globify'],
         debug: !PRODUCTION
     }))
-    .on('error', console.error.bind(console))
+    .on('error', err => console.error(err.stack))
     .pipe(angularInjector({
         token: 'ƒ'
     }))
