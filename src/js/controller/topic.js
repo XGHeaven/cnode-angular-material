@@ -15,8 +15,8 @@ cnode.controller('TopicController', ['$scope', 'API', '$state', 'User', 'Msgbox'
 
 	$scope.star = (reply) => {
 		reply.loading = true
-		API.postUps(reply.id).success(data => {
-			switch(data.action) {
+		API.postUps(reply.id).then(res => {
+			switch(res.data.action) {
 				case 'up':
 					reply.ups.push(User.user.id)
 					break
@@ -24,6 +24,7 @@ cnode.controller('TopicController', ['$scope', 'API', '$state', 'User', 'Msgbox'
 					reply.ups.splice(reply.ups.indexOf(User.user.id), 1)
 					break
 			}
+		}).finally(() => {
 			reply.loading = false
 		})
 	}

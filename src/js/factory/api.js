@@ -34,8 +34,12 @@ cnode.factory('API', ['$http', '$q', 'tabName', 'User', 'Msgbox', ($http, $q, ta
 	const postUps = needLogin(function postUps(replyId) {
 		return $http.post(`${url}/reply/${replyId}/ups`, {
 			accesstoken: User.getSetting().accessToken
-		}).success(data => {
-			switch(data.action) {
+		}).then(res => {
+			if (!res.data.success) {
+				return $q.reject(res)
+			}
+			
+			switch(res.data.action) {
 				case 'up':
 					Msgbox.alert('点赞成功')
 					break
@@ -43,7 +47,10 @@ cnode.factory('API', ['$http', '$q', 'tabName', 'User', 'Msgbox', ($http, $q, ta
 					Msgbox.alert('取消点赞成功')
 					break
 			}
-			return data.action
+			return res
+		}, res => {
+			Msgbox.alert(res.data.error_msg)
+			return $q.reject(res)
 		})
 	})
 
