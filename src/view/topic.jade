@@ -1,3 +1,5 @@
+md-button.md-fab.md-fab-bottom-right.cn-fixed(ng-click="focusReply()")
+	i.fa.fa-reply
 md-list
 	md-subheader Author
 	md-list-item.md-3-line
@@ -18,14 +20,14 @@ md-list
 			p(ng-bind-html="content | Markdown")
 	md-divider
 
-	md-subheader.md-no-sticky Replies
+	md-subheader Replies
 	md-list-item.md-3-line.reply.md-long-text(ng-repeat="reply in replies")
 		img.md-avatar(ng-src="{{reply.author.avatar_url}}")
 		.md-list-item-text
 			span {{reply.author.loginname}}
 			span.cn-content(ng-bind-html="reply.content | Markdown")
 		div(layout="column")
-			md-button.md-icon-button(ng-class="{stared:reply.ups.indexOf(CNUser.id) !== -1}" ng-click="star(reply)" ng-disabled="reply.author.loginname === CNUser.loginname")
+			md-button.md-icon-button(ng-class="{stared:reply.ups.indexOf(CNUser.id) !== -1, 'fa-spin':reply.loading}" ng-click="star(reply)" ng-disabled="reply.author.loginname === CNUser.loginname")
 				md-tooltip(md-direction="left") {{reply.ups.length}} Stared
 				i.fa.fa-star
 			md-button(ng-click="replyTo(reply)").md-icon-button
@@ -33,7 +35,7 @@ md-list
 				i.fa.fa-reply
 		md-divider
 
-	md-subheader.md-no-sticky Reply
+	md-subheader Reply
 	md-list-item(ng-if="!!replyFor")
 		md-button(ng-click="removeReplyFor()")
 			| 回复给 

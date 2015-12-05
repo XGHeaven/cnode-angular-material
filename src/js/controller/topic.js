@@ -14,6 +14,7 @@ cnode.controller('TopicController', ['$scope', 'API', '$state', 'User', 'Msgbox'
 	})
 
 	$scope.star = (reply) => {
+		reply.loading = true
 		API.postUps(reply.id).success(data => {
 			switch(data.action) {
 				case 'up':
@@ -23,6 +24,7 @@ cnode.controller('TopicController', ['$scope', 'API', '$state', 'User', 'Msgbox'
 					reply.ups.splice(reply.ups.indexOf(User.user.id), 1)
 					break
 			}
+			reply.loading = false
 		})
 	}
 
@@ -50,8 +52,13 @@ cnode.controller('TopicController', ['$scope', 'API', '$state', 'User', 'Msgbox'
 		$scope.replyText = `@${reply.author.loginname} `
 		$scope.replyFor = reply
 
+		$scope.focusReply()
+	}
+
+	$scope.focusReply = () => {
 		// focus
 		document.getElementById('replyText').focus()
 	}
+
 	$scope.removeReplyFor = () => $scope.replyFor = void 0
 }])
