@@ -3,9 +3,7 @@ md-toolbar
 		md-button.md-icon-button(ng-click="toggleSider()" hide-gt-md="true")
 			i.fa.fa-angle-right
 		h1(flex) {{mainTitle ? mainTitle : 'CNode.JS 中文社区'}}
-		md-button.md-icon-button(ui-sref="main.create")
-			i.fa.fa-plus
 
-md-content.md-padding(ui-view="" flex)
+md-content.md-padding(ui-view="" flex style="overflow-y:scroll")
 
 footer

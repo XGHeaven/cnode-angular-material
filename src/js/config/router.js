@@ -21,13 +21,13 @@ cnode.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', ($sta
 			}
 		}
 	})
+	// .state('main.list', {
+	// 	url: '/list',
+	// 	abstract: true,
+	// 	template: '<div ui-view></div>'
+	// })
 	.state('main.list', {
-		url: '/list',
-		abstract: true,
-		template: '<div ui-view></div>'
-	})
-	.state('main.list.all', {
-		url: '/{tab:all|good|share|ask|job}',
+		url: '/list/{tab:all|good|share|ask|job}',
 		templateUrl: 'view/list.html',
 		controller: 'ListController'
 	})
