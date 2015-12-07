@@ -8,6 +8,7 @@ form(name="settingForm")
 					ng-model="setting.accessToken"
 					ng-pattern="/^[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}$/i"
 					md-maxlength="36"
+					autocomplete="off"
 					required
 				)
 				div(ng-messages="settingForm.accessToken.$error")
