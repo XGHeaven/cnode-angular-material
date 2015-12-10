@@ -3,7 +3,7 @@ md-tabs.md-primary
 		md-content
 			md-list
 				md-list-item
-					md-button.md-primary Read All
+					md-button.md-primary(ng-click="markAll()") Read All
 				md-divider
 				md-list-item(ng-repeat="message in messages.hasnot_read_messages")
 					md-content(layout="column" flex)
@@ -21,7 +21,7 @@ md-tabs.md-primary
 	md-tab(label="已读消息({{messages.has_read_messages.length}})")
 		md-content
 			md-list
-				md-list-item(ng-click="1" ng-repeat="message in messages.has_read_messages")
+				md-list-item(ng-repeat="message in messages.has_read_messages")
 					div(ng-switch="message.type")
 						div(ng-switch-when="at") {{message.author.loginname}} 在 {{message.topic.title}} 中 @ 你
 						div(ng-switch-when="reply") {{message.author.loginname}} 回复了您 {{message.topic.title}} 的文章

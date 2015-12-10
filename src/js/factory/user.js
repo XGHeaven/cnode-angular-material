@@ -12,7 +12,6 @@ cnode.factory('User', ƒ(($http, $q, $rootScope, $localStorage, Msgbox, Setting,
 	function saveUser(usr) {
 		$rootScope.user = $localStorage.user = user = usr
 		Event.$emit('updatedUser')
-		console.log(Event)
 	}
 
 	function updateUser() {

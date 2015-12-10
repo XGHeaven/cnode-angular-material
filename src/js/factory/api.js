@@ -100,12 +100,28 @@ cnode.factory('API', ƒ(($http, $q, User, Msgbox, Setting) => {
 		})
 	})
 
+	const postMarkAll = needLogin(function postMarkAll() {
+		return $http.post(`${url}/message/mark_all`, {
+			accesstoken: Setting.accessToken
+		}).then(res => {
+			if (res.data.success) {
+				Msgbox.alert('已全部标记为已读')
+				return res
+			}
+			return $q.reject(res)
+		}).catch(err => {
+			Msgbox.alert('操作失败')
+			return $q.reject(err)
+		})
+	})
+
 	return {
 		getTopics,
 		getTopic,
 		postUps,
 		postTopicReply,
 		postTopic,
-		getMessages
+		getMessages,
+		postMarkAll
 	}
 }))

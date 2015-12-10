@@ -5,7 +5,7 @@ md-sidenav.md-sidenav-left.md-whiteframe-z3.fixed(md-component-id="sider" md-is-
 	div.sider-header(flex layout="column" layout-align="space-around center")
 		img.cn-avatar(src="{{user.avatar_url ? user.avatar_url : './image/unloginin.jpg'}}")
 		span.cn-name {{user.loginname ? user.loginname : 'UnLogin in'}}
-	md-list(layout="column" ng-click="toggleSider()")
+	md-list(layout="column" ng-click="toggleSider()" aria-label="button")
 		md-subheader News
 		md-list-item(ng-repeat="nav in navs")
 			md-button(ui-sref="main.list({tab:nav.tab})" flex)
