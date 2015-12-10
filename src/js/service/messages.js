@@ -1,7 +1,6 @@
 import cnode from '../cnode'
 
-cnode.service('Message', ƒ(function($timeout, $rootScope, API){
-	let interval = 3000
+cnode.service('Message', ƒ(function($timeout, $rootScope, API, Setting, Event){
 	let status = false
 	let timer = null
 
@@ -16,6 +15,10 @@ cnode.service('Message', ƒ(function($timeout, $rootScope, API){
 
 	this.check = check;
 
+	Event.$on('updatedUser', () => {
+		this.start()
+	})
+
 	function check() {
 		API.getMessages().then(res => {
 			let data = res.data
@@ -24,7 +27,8 @@ cnode.service('Message', ƒ(function($timeout, $rootScope, API){
 		}, res => {
 			console.log('error')
 		}).finally(() => {
-			if (status) timer = $timeout(check, interval)
+			// default is 1 min
+			if (status) timer = $timeout(check, Setting.interval || 60000)
 			else timer = null
 		})
 	}

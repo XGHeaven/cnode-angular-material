@@ -1,10 +1,9 @@
 import cnode from '../cnode'
 
-cnode.controller('SettingController', ƒ(($scope, $mdToast, User) => {
-	$scope.setting = angular.extend({}, User.getSetting() || {})
+cnode.controller('SettingController', ƒ(($scope, User, Setting, Msgbox) => {
+	$scope.setting = Setting.$pure()
 	$scope.save = () => {
-		// $mdToast.show($mdToast.simple().content('Saving...').position('top right').hideDelay(2000))
-		User.saveSetting($scope.setting)
-		User.updateUser()
+		Setting.$save($scope.setting)
+		Msgbox.alert('设置保存成功！')
 	}
 }))

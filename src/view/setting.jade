@@ -1,4 +1,4 @@
-form(name="settingForm")
+form(name="settingForm" ng-submit="save()")
 	md-list(ng-clock)
 		md-list-item
 			md-input-container(flex="")
@@ -15,6 +15,17 @@ form(name="settingForm")
 					div(ng-message="md-maxlength") 您输入的内容过多，请重新输入
 					div(ng-message="pattern") AccessToken格式错误，请重新输入
 		md-divider
+		md-subheader 消息
 		md-list-item
-			md-button(type="submit" ng-submit="save()").md-primary Save
-			md-button.md-warn(type="button") Cancel
+			md-input-container(flex)
+				label 消息检测间隔
+				md-select(ng-model="setting.interval")
+					md-option(value="3000") 3秒钟（测试使用）
+					md-option(value="60000") 1分钟
+					md-option(value="300000") 5分钟
+					md-option(value="600000") 10分钟
+					md-option(value="1800000") 30分钟
+					md-option(value="3600000") 一小时
+		md-list-item
+			md-button(type="submit").md-primary Save
+			md-button.md-warn(type="reset") Cancel

@@ -1,18 +1,18 @@
 import cnode from '../cnode'
 
-cnode.factory('User', ƒ(($http, $q, $rootScope, $localStorage, Msgbox) => {
-	let setting = $localStorage.setting || {}
+cnode.factory('User', ƒ(($http, $q, $rootScope, $localStorage, Msgbox, Setting, Event) => {
 	let user = $localStorage.user || {}
 
-	$rootScope.CNUser = user
-	$rootScope.CNSetting = setting
+	$rootScope.user = user
 
-	function saveSetting(set) {
-		$rootScope.CNSetting = $localStorage.setting = setting = set
-	}
+	Setting.$watch('accessToken', (nValue, oValue) => {
+		updateUser()
+	})
 
 	function saveUser(usr) {
-		$rootScope.CNUser = $localStorage.user = user = usr
+		$rootScope.user = $localStorage.user = user = usr
+		Event.$emit('updatedUser')
+		console.log(Event)
 	}
 
 	function updateUser() {
@@ -20,12 +20,13 @@ cnode.factory('User', ƒ(($http, $q, $rootScope, $localStorage, Msgbox) => {
 		_userUpdating()
 
 		$http.post('https://cnodejs.org/api/v1/accesstoken', {
-			accesstoken: setting.accessToken
+			accesstoken: Setting.accessToken
 		}).success((data) => {
 			if (data.success) {
 				let id = data.id
 				return $http.get('https://cnodejs.org/api/v1/user/' + data.loginname)
 				.success((data) => {
+					// bind user id, default is not bind
 					data.data.id = id
 					saveUser(data.data)
 				})
@@ -42,10 +43,6 @@ cnode.factory('User', ƒ(($http, $q, $rootScope, $localStorage, Msgbox) => {
 		return defer.promise;
 	}
 
-	function getSetting() {
-		return setting = $localStorage.setting;
-	}
-
 	function _userUpdating(...args) {
 		Msgbox.alert('正在获取您的贵姓，贵庚...', ...args)
 	}
@@ -59,8 +56,7 @@ cnode.factory('User', ƒ(($http, $q, $rootScope, $localStorage, Msgbox) => {
 	}
 
 	function clear() {
-		$rootScope.CNSetting = $localStorage.setting = setting = {}
-		$rootScope.CNUser = $localStorage.user = user  = {}
+		$rootScope.user = $localStorage.user = user  = {}
 	}
 
 	function isLogin() {
@@ -68,9 +64,7 @@ cnode.factory('User', ƒ(($http, $q, $rootScope, $localStorage, Msgbox) => {
 	}
 
 	return {
-		saveSetting,
 		updateUser,
-		getSetting,
 		clear,
 		isLogin,
 		get user() {

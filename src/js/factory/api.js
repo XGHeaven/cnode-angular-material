@@ -1,6 +1,6 @@
 import cnode from '../cnode'
 
-cnode.factory('API', ['$http', '$q', 'User', 'Msgbox', ($http, $q, User, Msgbox) => {
+cnode.factory('API', ƒ(($http, $q, User, Msgbox, Setting) => {
 	const url = 'https://cnodejs.org/api/v1'
 
 	function needLogin(fn) {
@@ -56,7 +56,7 @@ cnode.factory('API', ['$http', '$q', 'User', 'Msgbox', ($http, $q, User, Msgbox)
 
 	const postTopicReply = needLogin(function postTopicReply(topicId, content, replyId) {
 		return $http.post(`${url}/topic/${topicId}/replies`, {
-			accesstoken: User.getSetting().accessToken,
+			accesstoken: Setting.accessToken,
 			content: content,
 			replyId: replyId
 		})
@@ -65,7 +65,7 @@ cnode.factory('API', ['$http', '$q', 'User', 'Msgbox', ($http, $q, User, Msgbox)
 	const postTopic = needLogin(function postTopic(tab, title, content) {
 		return $http.post(`${url}/topics`, {
 			tab, title, content,
-			accesstoken: User.getSetting().accessToken
+			accesstoken: Setting.accessToken
 		}).then(res => {
 			if (res.data.success) {
 				Msgbox.alert('发表成功')
@@ -81,17 +81,17 @@ cnode.factory('API', ['$http', '$q', 'User', 'Msgbox', ($http, $q, User, Msgbox)
 	})
 
 	const getMessages = needLogin(function getMessages() {
-		Msgbox.alert('获取未读消息中...')
+		// Msgbox.alert('获取未读消息中...')
 		return $http.get(`${url}/messages`, {
 			params: {
-				accesstoken: User.getSetting().accessToken,
+				accesstoken: Setting.accessToken,
 				mdrender: false
 			}
 		}).then(res => {
-			if (res.data && res.data.hasnot_read_messages && res.data.hasnot_read_messages.length) {
-				Msgbox.alert(`您有 ${res.data.hasnot_read_messages.length} 条未读消息`)
+			if (res.data.data && res.data.data.hasnot_read_messages && res.data.data.hasnot_read_messages.length) {
+				Msgbox.alert(`您有 ${res.data.data.hasnot_read_messages.length} 条未读消息`)
 			} else {
-				Msgbox.alert(`您暂时没有未读消息`)
+				// Msgbox.alert(`您暂时没有未读消息`)
 			}
 			return res
 		}, res => {
@@ -108,4 +108,4 @@ cnode.factory('API', ['$http', '$q', 'User', 'Msgbox', ($http, $q, User, Msgbox)
 		postTopic,
 		getMessages
 	}
-}])
+}))

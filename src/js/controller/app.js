@@ -1,6 +1,8 @@
 import cnode from '../cnode'
 
 cnode.controller('RootController', ƒ(($rootScope, $mdSidenav, User, $mdMedia, Message) => {
+	// instance message
+	
 	$rootScope.toggleSider = () => {
 		if ($mdMedia('gt-md')) { return }
 
@@ -14,5 +16,4 @@ cnode.controller('RootController', ƒ(($rootScope, $mdSidenav, User, $mdMedia, M
 		User.clear()
 	}
 
-	Message.check()
 }))

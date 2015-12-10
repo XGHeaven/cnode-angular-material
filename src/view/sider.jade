@@ -3,21 +3,21 @@ md-sidenav.md-sidenav-left.md-whiteframe-z3.fixed(md-component-id="sider" md-is-
 	//- md-toolbar.md-theme-indigo
 		h1.md-toolbar-tools CNode.JS
 	div.sider-header(flex layout="column" layout-align="space-around center")
-		img.cn-avatar(src="{{CNUser.avatar_url ? CNUser.avatar_url : './image/unloginin.jpg'}}")
-		span.cn-name {{CNUser.loginname ? CNUser.loginname : 'Un Login in'}}
+		img.cn-avatar(src="{{user.avatar_url ? user.avatar_url : './image/unloginin.jpg'}}")
+		span.cn-name {{user.loginname ? user.loginname : 'UnLogin in'}}
 	md-list(layout="column" ng-click="toggleSider()")
 		md-subheader News
 		md-list-item(ng-repeat="nav in navs")
 			md-button(ui-sref="main.list({tab:nav.tab})" flex)
 				| {{nav.title}}
 
-		md-subheader(ng-if="!!CNUser.loginname") User
+		md-subheader(ng-if="!!user.loginname") User
 		md-list-item
 			md-button(ui-sref="main.messages" flex)
 				| 消息
 				| 
-				span(ng-show="CNUser.messages").label.label-default
-					| {{CNUser.messages}}
+				span(ng-show="messages.hasnot_read_messages").label.label-default
+					| {{messages.hasnot_read_messages.length}}
 		md-list-item
 			md-button(ng-click="logout()" flex) 退出
 
