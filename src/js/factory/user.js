@@ -6,7 +6,13 @@ cnode.factory('User', ƒ(($http, $q, $rootScope, $localStorage, Msgbox, Setting,
 	$rootScope.user = user
 
 	Setting.$watch('accessToken', (nValue, oValue) => {
+		// if new value is undefined, mean logout or never login, do nothing
+		if (!nValue) return
 		updateUser()
+	})
+
+	Event.$on('logout', () => {
+		clear()
 	})
 
 	function saveUser(usr) {
