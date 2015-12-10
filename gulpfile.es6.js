@@ -82,7 +82,9 @@ gulp.task('cdn', () => {
         'angular-material/angular-material.layouts',
         'bootstrap/dist/css/bootstrap',
         'font-awesome/css/font-awesome'
-        ].map(addMin('.css')).concat(['./node_modules/highlight.js/styles/default.css'])
+        ].map(addMin('.css')).concat([
+            './node_modules/highlight.js/styles/default.css'
+        ])
 
     const fontFiles = [
         'bootstrap/dist/fonts/*.*',

@@ -1,6 +1,6 @@
 import cnode from '../cnode'
 
-cnode.factory('User', ['$http', '$q', '$rootScope', '$localStorage', 'Msgbox', ($http, $q, $rootScope, $localStorage, Msgbox) => {
+cnode.factory('User', ƒ(($http, $q, $rootScope, $localStorage, Msgbox) => {
 	let setting = $localStorage.setting || {}
 	let user = $localStorage.user || {}
 
@@ -77,4 +77,4 @@ cnode.factory('User', ['$http', '$q', '$rootScope', '$localStorage', 'Msgbox', (
 			return user
 		}
 	}
-}])
+}))

@@ -1,6 +1,6 @@
 import cnode from '../cnode'
 
-cnode.factory('API', ['$http', '$q', 'tabName', 'User', 'Msgbox', ($http, $q, tabName, User, Msgbox) => {
+cnode.factory('API', ['$http', '$q', 'User', 'Msgbox', ($http, $q, User, Msgbox) => {
 	const url = 'https://cnodejs.org/api/v1'
 
 	function needLogin(fn) {
@@ -80,11 +80,32 @@ cnode.factory('API', ['$http', '$q', 'tabName', 'User', 'Msgbox', ($http, $q, ta
 		})
 	})
 
+	const getMessages = needLogin(function getMessages() {
+		Msgbox.alert('获取未读消息中...')
+		return $http.get(`${url}/messages`, {
+			params: {
+				accesstoken: User.getSetting().accessToken,
+				mdrender: false
+			}
+		}).then(res => {
+			if (res.data && res.data.hasnot_read_messages && res.data.hasnot_read_messages.length) {
+				Msgbox.alert(`您有 ${res.data.hasnot_read_messages.length} 条未读消息`)
+			} else {
+				Msgbox.alert(`您暂时没有未读消息`)
+			}
+			return res
+		}, res => {
+			Msgbox.alert(`获取消息失败...发生错误...`)
+			return $q.reject(res)
+		})
+	})
+
 	return {
 		getTopics,
 		getTopic,
 		postUps,
 		postTopicReply,
-		postTopic
+		postTopic,
+		getMessages
 	}
 }])
