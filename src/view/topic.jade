@@ -17,22 +17,29 @@ md-list
 	md-subheader Content
 	md-list-item
 		md-content.cn-content
-			p(ng-bind-html="content | Markdown")
+			div(ng-bind-html="content | Markdown")
 	md-divider
 
 	md-subheader Replies
 	md-list-item.md-3-line.reply.md-long-text(ng-repeat="reply in replies")
 		img.md-avatar(ng-src="{{reply.author.avatar_url}}")
 		.md-list-item-text
-			span {{reply.author.loginname}}
-			span.cn-content(ng-bind-html="reply.content | Markdown")
-		div(layout="column")
-			md-button.md-icon-button(ng-class="{stared:reply.ups.indexOf(CNUser.id) !== -1, 'fa-spin':reply.loading}" ng-click="star(reply)" ng-disabled="reply.author.loginname === CNUser.loginname")
-				md-tooltip(md-direction="left") {{reply.ups.length}} Stared
-				i.fa.fa-star
-			md-button(ng-click="replyTo(reply)").md-icon-button
-				md-tooltip(md-direction="left") Reply
-				i.fa.fa-reply
+			div {{reply.author.loginname}}
+			div 回复时间：{{reply.create_at | diffDate}}
+			div.cn-content(ng-bind-html="reply.content | Markdown")
+		div(ng-switch="reply.author.loginname !== CNUser.loginname")
+			div(ng-switch-when="true" layout="column")
+				md-button.md-icon-button(ng-class="{stared:reply.ups.indexOf(CNUser.id) !== -1, 'fa-spin':reply.loading}" ng-click="star(reply)")
+					md-tooltip(md-direction="left") {{reply.ups.length}} Stared
+					i.fa.fa-star
+				md-button(ng-click="replyTo(reply)").md-icon-button
+					md-tooltip(md-direction="left") Reply
+					i.fa.fa-reply
+			div(ng-switch-when="false" layout="column")
+				md-button.md-icon-button
+					i.fa.fa-edit
+				md-button.md-icon-button
+					i.fa.fa-trash
 		md-divider
 
 	md-subheader Reply
