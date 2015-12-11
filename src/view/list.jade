@@ -1,14 +1,15 @@
 md-button.md-fab.md-fab-bottom-right.md-primary.cn-fixed(ui-sref="main.create")
 	i.fa.fa-plus
 md-list
-	md-list-item.md-3-line(ng-repeat="item in items" ng-click="showTopic($event,item.id)" ng-class="{'md-whiteframe-z2': item.good}")
-		img.md-avatar(ng-src="{{item.author.avatar_url}}" ng-class="{'cn-avatar-top': item.top, 'cn-avatar-good':item.good}")
+	md-list-item.md-3-line(ng-repeat="item in items" ng-click="showTopic($event,item.id)" ng-class="{'md-whiteframe-z2': item.top}")
+		img.md-avatar(ng-src="{{item.author.avatar_url}}" ng-class="{'cn-avatar-top': item.top}")
 		.md-list-item-text(layout="column")
-			span.cn-list-header
+			h3.cn-list-header
 				cn-label(cn-tab="item.tab")
+				span.label.label-success(ng-if="item.good") 精华
 				| {{item.title}}
-			span {{item.author.loginname}} 发布于 {{item.create_at | diffDate}}
-			span(layout="row" layout-align="center center")
+			p {{item.author.loginname}} 发布于 {{item.create_at | diffDate}}
+			p(layout="row" layout-align="center center")
 				span(flex) {{item.last_reply_at | diffDate}}
-				span.label.label-default.cn-label-reply {{item.reply_count}} / {{item.visit_count}}
+				span.label.cn-label-reply(ng-class="{'label-default':!item.reply_count, 'label-primary': item.reply_count}") {{item.reply_count}} / {{item.visit_count}}
 		md-divider
