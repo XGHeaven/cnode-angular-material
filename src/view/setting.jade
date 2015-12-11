@@ -15,6 +15,17 @@ form(name="settingForm" ng-submit="save()")
 					div(ng-message="md-maxlength") 您输入的内容过多，请重新输入
 					div(ng-message="pattern") AccessToken格式错误，请重新输入
 		md-divider
+		md-subheader 文章
+		md-list-item
+			md-input-container(flex)
+				label 一页的文章个数
+				md-select(ng-model="setting.pageSize")
+					md-option(value="10") 10
+					md-option(value="15") 15
+					md-option(value="20") 20
+					md-option(value="25") 25
+					md-option(value="30") 30
+		md-divider
 		md-subheader 消息
 		md-list-item
 			md-input-container(flex)

@@ -17,5 +17,4 @@ cnode.controller('RootController', ƒ(($rootScope, $mdSidenav, User, $mdMedia, M
 	}
 
 	$rootScope.event = Event
-
 }))

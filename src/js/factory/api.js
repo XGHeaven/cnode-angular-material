@@ -14,9 +14,11 @@ cnode.factory('API', ƒ(($http, $q, User, Msgbox, Setting) => {
 		}
 	}
 
-	function getTopics(tab = 'all') {
+	function getTopics(tab = 'all', page = 1, limit = parseInt(Setting.pageSize,10) || 15) {
 		return $http.get(url + '/topics', {
 			params: {
+				page,
+				limit,
 				tab,
 				mdrender: false
 			}
