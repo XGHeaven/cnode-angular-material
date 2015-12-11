@@ -1,5 +1,4 @@
 import cnode from '../cnode'
-import md from '../utils/md'
 import angular from 'angular'
 
 cnode.controller('TopicDialogController', ['$scope', '$mdDialog', 'API', 'TopicID', '$state', ($scope, $mdDialog, API, id, $state) => {

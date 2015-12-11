@@ -1,5 +1,6 @@
 import cnode from '../cnode'
 import marked from 'marked'
+// only support in nodejs
 import hljs from 'highlight.js'
 
 cnode.factory('Marked', [() => {
