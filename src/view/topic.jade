@@ -1,17 +1,20 @@
-md-button.md-fab.md-fab-bottom-right.cn-fixed(ng-click="focusReply()")
+md-button.md-fab.md-fab-bottom-right.md-primary.cn-fixed(ng-click="focusReply()")
 	i.fa.fa-reply
 md-list
 	md-subheader Author
 	md-list-item.md-3-line
 		img.md-avatar(src="{{author.avatar_url}}")
 		.md-list-item-text
-			div 
-				| {{author.loginname}} 
+			h3
 				cn-label(cn-tab="tab")
-			div 创建于 {{create_at | date: 'yyyy-MM-dd hh:mm:ss'}}
-			div 最近一次回复 {{last_reply_at | diffDate}}
-			div 回复次数: {{reply_count}} , 浏览次数: {{visit_count}}
-			div
+				| {{author.loginname}} 
+				small 创建于 {{create_at | date: 'yyyy-MM-dd hh:mm:ss'}}
+			h4 最近一次回复 {{last_reply_at | diffDate}}
+			h4
+				| 回复次数: 
+				span.label.label-success {{reply_count}}
+				| , 浏览次数: 
+				span.label.label-primary {{visit_count}}
 	md-divider
 
 	md-subheader Content
@@ -24,9 +27,9 @@ md-list
 	md-list-item.md-3-line.reply.md-long-text(ng-repeat="reply in replies")
 		img.md-avatar(ng-src="{{reply.author.avatar_url}}")
 		.md-list-item-text
-			div {{reply.author.loginname}}
-			div 回复时间：{{reply.create_at | diffDate}}
-			div.cn-content(ng-bind-html="reply.content | Markdown")
+			h5 {{reply.author.loginname}} 
+				small 回复时间：{{reply.create_at | diffDate}}
+			p.cn-content(ng-bind-html="reply.content | Markdown")
 		div(ng-switch="reply.author.loginname !== CNUser.loginname")
 			div(ng-switch-when="true" layout="column")
 				md-button.md-icon-button(ng-class="{stared:reply.ups.indexOf(CNUser.id) !== -1, 'fa-spin':reply.loading}" ng-click="star(reply)")
