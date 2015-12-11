@@ -57,7 +57,7 @@ md-list
 			textarea#replyText(ng-model="$parent.replyText")
 	md-list-item(ng-if="replyPreview === true")
 		md-content.cn-content
-			span(ng-bind-html="$parent.replyText | Markdown")
+			p.cn-content.cn-quote(ng-bind-html="$parent.replyText | Markdown")
 	md-list-item
 		md-button(type="button" ng-click="togglePreview()") 预览
-		md-button.md-accent(type="button" ng-click="submit()") 提交
+		md-button.md-primary(type="button" ng-click="submit()") 提交
