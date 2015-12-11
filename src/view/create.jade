@@ -1,4 +1,4 @@
-form(name="createForm")
+form(name="createForm" ng-submit="submit()")
 	md-input-container
 		label 请选择模块
 		md-select(ng-model="tab" required)
@@ -21,4 +21,4 @@ form(name="createForm")
 		md-divider
 
 	md-button(type="button" ng-click="togglePreview()") 预览
-	md-button(type="submit" ng-submit="submit()") 提交
+	md-button(type="submit") 提交
