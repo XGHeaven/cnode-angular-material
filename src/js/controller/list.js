@@ -1,7 +1,7 @@
 import cnode from '../cnode'
 import angular from 'angular'
 
-cnode.controller('ListController', ['$scope', '$mdDialog', '$state', 'API', '$mdMedia', ($scope, $mdDialog, $state, API, $mdMedia) => {
+cnode.controller('ListController', ƒ(($scope, $mdDialog, $state, API, $mdMedia, Setting) => {
 	const tab = $state.params.tab || 'all'
 
 	$scope.pages = []
@@ -48,7 +48,7 @@ cnode.controller('ListController', ['$scope', '$mdDialog', '$state', 'API', '$md
 	})
 	
 	$scope.showTopic = (e,id) => {
-		if (!$mdMedia('gt-md')) {
+		if (!$mdMedia('gt-md') || Setting.isOpenWithoutModel) {
 			return $scope.gotoTopic(id)
 		}
 		$mdDialog.show({
@@ -66,4 +66,4 @@ cnode.controller('ListController', ['$scope', '$mdDialog', '$state', 'API', '$md
 			
 		})
 	}
-}])
+}))

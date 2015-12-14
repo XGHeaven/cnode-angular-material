@@ -25,6 +25,10 @@ form(name="settingForm" ng-submit="save()")
 					md-option(value="20") 20
 					md-option(value="25") 25
 					md-option(value="30") 30
+		md-list-item
+			//- md-input-container(flex)
+			p 不以模态方式打开
+			md-switch.md-primary(ng-model="setting.isOpenWithoutModel") 
 		md-divider
 		md-subheader 消息
 		md-list-item
