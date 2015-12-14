@@ -4,7 +4,8 @@
   "description": "a material design, power by angular",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "NODE_ENV=production gulp deploy",
+    "start": "gulp"
   },
   "author": "",
   "license": "ISC",
