@@ -3,6 +3,8 @@ md-toolbar
 		md-button.md-icon-button(ng-click="toggleSider()" hide-gt-md="true" aria-label="button")
 			i.fa.fa-angle-right
 		h1(flex) {{mainTitle ? mainTitle : 'CNode.JS 中文社区'}}
+		md-button.md-icon-button(ng-click="refresh()")
+			i.fa.fa-refresh(ng-class="{'fa-spin': isRefresh}")
 
 md-content(ui-view="" flex style="overflow-y:scroll")
 

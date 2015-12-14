@@ -50,7 +50,8 @@
       "es2015"
     ],
     "plugins": [
-      "syntax-function-bind"
+      "syntax-function-bind",
+      "transform-function-bind"
     ],
     "comments": false
   },
