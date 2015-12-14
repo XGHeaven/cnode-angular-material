@@ -3,18 +3,23 @@ import cnode from '../cnode'
 cnode.controller('SiderController', ƒ(($scope) => {
 	$scope.navs = [{
 		title: '全部',
-		tab: 'all'
+		tab: 'all',
+		fa: 'list'
 	}, {
 		title: '精华',
-		tab: 'good'
+		tab: 'good',
+		fa: 'thumbs-o-up'
 	}, {
 		title: '分享',
-		tab: 'share'
+		tab: 'share',
+		fa: 'share-alt'
 	}, {
 		title: '问答',
-		tab: 'ask'
+		tab: 'ask',
+		fa: 'question-circle'
 	}, {
 		title: '招聘',
-		tab: 'job'
+		tab: 'job',
+		fa: 'money'
 	}]
 }))

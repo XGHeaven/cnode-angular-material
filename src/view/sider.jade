@@ -9,16 +9,15 @@ md-sidenav.md-sidenav-left.md-whiteframe-z3.fixed(md-component-id="sider" md-is-
 		md-subheader News
 		md-list-item(ng-repeat="nav in navs")
 			md-button(ui-sref="main.list({tab:nav.tab})" flex)
+				i.fa(class="fa-{{nav.fa}}") 
 				| {{nav.title}}
 
 		//- only support login in mode
 		md-subheader(ng-if="!!user.loginname") User
 		md-list-item(ng-if="!!user.loginname")
 			md-button(ui-sref="main.messages" flex)
+				span(ng-show="messages.hasnot_read_messages").label.label-default {{messages.hasnot_read_messages.length}}
 				| 消息
-				| 
-				span(ng-show="messages.hasnot_read_messages").label.label-default
-					| {{messages.hasnot_read_messages.length}}
 		md-list-item(ng-if="!!user.loginname")
 			md-button(ng-click="logout()" flex) 退出
 
