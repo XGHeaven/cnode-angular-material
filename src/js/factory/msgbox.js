@@ -1,6 +1,6 @@
 import cnode from '../cnode'
 
-cnode.factory('Msgbox', ['$mdToast', ($mdToast) => {
+cnode.factory('Msgbox', ƒ(($mdToast, $mdDialog) => {
 
 	/**
 	 * msg {String} msg to show
@@ -33,8 +33,24 @@ cnode.factory('Msgbox', ['$mdToast', ($mdToast) => {
 		return show(msg, '关闭')
 	}
 
+	function unSupport() {
+		return alert('此功能暂时不支持，等待开发或者是社区提供API')
+	}
+
+	function confirm(title, body=title) {
+		const confirmDialog = $mdDialog.confirm()
+		.title(title)
+		.textContent(body)
+		.ok('确认')
+		.cancel('取消')
+
+		return $mdDialog.show(confim)
+	}
+
 	return {
 		show,
-		alert
+		alert,
+		unSupport,
+		confirm
 	}
-}])
+}))
