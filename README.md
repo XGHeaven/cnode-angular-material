@@ -33,5 +33,21 @@
 
 或者选择给我提Issus
 
+安装
+---
+
+1. Clone
+2. cd
+3. npm install
+4. npm install gulp -g
+5. npm start
+6. coding......
+
+然后就可以愉快的写代码了，自带自动`live reload`
+
+```
+npm run deploy # 一键部署到 gp-pages
+```
+
 谢谢大家
 ---	
