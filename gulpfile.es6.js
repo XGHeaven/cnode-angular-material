@@ -129,7 +129,7 @@ gulp.task('reload', () => {
     browserSync.reload()
 })
 
-gulp.task('server', () => {
+gulp.task('server', ['build'], () => {
     browserSync.init({
         server: {
             baseDir: DIST
