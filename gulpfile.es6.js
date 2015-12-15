@@ -121,7 +121,7 @@ gulp.task('build', ['clean', 'es6', 'stylus', 'view', 'cdn', 'image'])
 gulp.task('watch', () => {
     watch('./src/js/**/*.js', () => gulp.run(['es6']))
     watch('./src/stylus/**/*.styl', () => gulp.run(['stylus']))
-    watch(['./src/*.html', './src/**/*.jade'], () => gulp.run(['view']))
+    watch(['./src/**/*.html', './src/**/*.jade'], () => gulp.run(['view']))
     watch('./src/image/**/*', () => gulp.run(['image']))
 })
 
