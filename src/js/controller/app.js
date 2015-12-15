@@ -1,6 +1,6 @@
 import cnode from '../cnode'
 
-cnode.controller('RootController', ƒ(($rootScope, $mdSidenav, User, $mdMedia, Message, Event, Msgbox) => {
+cnode.controller('RootController', ƒ(($rootScope, $mdSidenav, $mdMedia, Message, Event, Msgbox) => {
 	// instance message
 
 	$rootScope.toggleSider = () => {

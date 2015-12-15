@@ -19,6 +19,10 @@ cnode.service('Message', ƒ(function($timeout, $rootScope, API, Setting, Event){
 		this.start()
 	})
 
+	Event.$on('logout', () => {
+		delete $rootScope.messages
+	})
+
 	function check() {
 		API.getMessages().then(res => {
 			let data = res.data

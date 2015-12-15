@@ -37,6 +37,12 @@ cnode.factory('Msgbox', ƒ(($mdToast, $mdDialog) => {
 		return alert('此功能暂时不支持，等待开发或者是社区提供API')
 	}
 
+	/**
+	 * like build in confirm , only implemnet with $mdDialog
+	 * @param title {String} title to confirm
+	 * @param [body] {String=title} body text to show, default equal title
+	 * @return {Promise}
+	 */
 	function confirm(title, body=title) {
 		const confirmDialog = $mdDialog.confirm()
 		.title(title)

@@ -1,6 +1,6 @@
 import cnode from '../cnode'
 
-cnode.controller('SettingController', ƒ(($scope, User, Setting, Msgbox) => {
+cnode.controller('SettingController', ƒ(($scope, Setting, Msgbox) => {
 	$scope.setting = Setting.$pure()
 	$scope.save = () => {
 		Setting.$save($scope.setting)

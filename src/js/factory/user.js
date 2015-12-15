@@ -61,7 +61,8 @@ cnode.factory('User', ƒ(($http, $q, $rootScope, $localStorage, Msgbox, Setting,
 	}
 
 	function clear() {
-		$rootScope.user = $localStorage.user = user  = {}
+		$rootScope.user = user  = {}
+		delete $localStorage.user
 	}
 
 	function isLogin() {

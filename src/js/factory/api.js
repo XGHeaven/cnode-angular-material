@@ -35,7 +35,7 @@ cnode.factory('API', ƒ(($http, $q, User, Msgbox, Setting) => {
 
 	const postUps = needLogin(function postUps(replyId) {
 		return $http.post(`${url}/reply/${replyId}/ups`, {
-			accesstoken: User.getSetting().accessToken
+			accesstoken: Setting.accessToken
 		}).then(res => {
 			if (!res.data.success) {
 				return $q.reject(res)

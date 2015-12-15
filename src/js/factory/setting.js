@@ -13,7 +13,12 @@ cnode.factory('Setting', ƒ(($rootScope, $localStorage, Event) => {
 	}
 	setDefault()
 
-	// create isolate scope to save setting
+	/* create isolate scope to save setting
+	 * bind with some new value
+	 * @method $save save setting FFF
+	 * @method $pure return new object without build in method (prefix with `$`) FFF
+	 * @method $reset reset setting object and $localStorage FFF
+	 */
 	const setting = $rootScope.$new(true)
 	function $save(config) {
 		angular.merge(setting, config)
@@ -46,7 +51,7 @@ cnode.factory('Setting', ƒ(($rootScope, $localStorage, Event) => {
 				delete setting[key]
 			})
 			// clear localstorage
-			$localStorage.setting = {}
+			delete $localStorage.setting
 		},
 		writable: false,
 		enumerable: false,
@@ -61,7 +66,6 @@ cnode.factory('Setting', ƒ(($rootScope, $localStorage, Event) => {
 
 	Event.$on('logout', () => {
 		setting.$reset()
-		$localStorage.$reset()
 		setDefault()
 	})
 
