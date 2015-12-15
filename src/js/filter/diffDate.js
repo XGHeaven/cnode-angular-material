@@ -17,7 +17,7 @@ cnode.filter('diffDate', [() => {
 			case (diff/=12) < 1:
 				return parseInt(diff*12) + ' 月以前'
 			default:
-				return parseInt(diff) + ' 年以前'
+				return (parseInt(diff) || 0) + ' 年以前'
 		}
 	}
 }])
