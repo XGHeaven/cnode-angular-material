@@ -1,5 +1,6 @@
 form(name="settingForm" ng-submit="save()")
 	md-list(ng-clock)
+		md-subheader 基础设置
 		md-list-item
 			md-input-container(flex="")
 				label AccessToken
@@ -29,7 +30,14 @@ form(name="settingForm" ng-submit="save()")
 			//- md-input-container(flex)
 			p 不以模态方式打开
 			md-switch.md-primary(ng-model="setting.isOpenWithoutModel") 
+		md-list-item
+			p 自动过滤小尾巴
+			md-switch.md-primary(ng-model="setting.autoFilterTail")
+		md-list-item
+			p 添加小尾巴(暂时不支持)
+			md-switch.md-primay(ng-model="setting.addTail" ng-disabled="true")
 		md-divider
+
 		md-subheader 消息
 		md-list-item
 			md-input-container(flex)

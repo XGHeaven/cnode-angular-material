@@ -29,7 +29,7 @@ md-list
 		.md-list-item-text
 			h5 {{reply.author.loginname}} 
 				small 回复时间：{{reply.create_at | diffDate}}
-			p.cn-content(ng-bind-html="reply.content | Markdown")
+			p.cn-content(ng-bind-html="reply.content | removeTail | Markdown")
 		div(ng-switch="reply.author.loginname !== $root.user.loginname")
 			div(ng-switch-when="true" layout="column")
 				md-button.md-icon-button(ng-class="{stared:reply.ups.indexOf(CNUser.id) !== -1, 'fa-spin':reply.loading}" ng-click="star(reply)")

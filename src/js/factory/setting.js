@@ -6,7 +6,8 @@ cnode.factory('Setting', ƒ(($rootScope, $localStorage, Event) => {
 		$localStorage.$default({
 			setting: {
 				pageSize: '15',
-				interval: '300000'
+				interval: '300000',
+				autoFilterTail: true
 			}
 		})
 	}
