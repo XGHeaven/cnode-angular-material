@@ -2,12 +2,15 @@ import cnode from '../cnode'
 
 cnode.factory('Setting', ƒ(($rootScope, $localStorage, Event) => {
 	// set default value
-	$localStorage.$default({
-		setting: {
-			pageSize: '15',
-			interval: '300000'
-		}
-	})
+	function setDefault() {
+		$localStorage.$default({
+			setting: {
+				pageSize: '15',
+				interval: '300000'
+			}
+		})
+	}
+	setDefault()
 
 	// create isolate scope to save setting
 	const setting = $rootScope.$new(true)
@@ -57,6 +60,8 @@ cnode.factory('Setting', ƒ(($rootScope, $localStorage, Event) => {
 
 	Event.$on('logout', () => {
 		setting.$reset()
+		$localStorage.$reset()
+		setDefault()
 	})
 
 	return setting;
