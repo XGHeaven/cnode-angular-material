@@ -61,4 +61,7 @@ cnode.controller('TopicController', ['$scope', 'API', '$state', 'User', 'Msgbox'
 	}
 
 	$scope.removeReplyFor = () => $scope.replyFor = void 0
+
+	$scope.delete = Msgbox.unSupport
+	$scope.edit = Msgbox.unSupport
 }])

@@ -30,7 +30,7 @@ md-list
 			h5 {{reply.author.loginname}} 
 				small 回复时间：{{reply.create_at | diffDate}}
 			p.cn-content(ng-bind-html="reply.content | Markdown")
-		div(ng-switch="reply.author.loginname !== CNUser.loginname")
+		div(ng-switch="reply.author.loginname !== $root.user.loginname")
 			div(ng-switch-when="true" layout="column")
 				md-button.md-icon-button(ng-class="{stared:reply.ups.indexOf(CNUser.id) !== -1, 'fa-spin':reply.loading}" ng-click="star(reply)")
 					md-tooltip(md-direction="left") {{reply.ups.length}} Stared
@@ -39,9 +39,9 @@ md-list
 					md-tooltip(md-direction="left") Reply
 					i.fa.fa-reply
 			div(ng-switch-when="false" layout="column")
-				md-button.md-icon-button
+				md-button.md-icon-button(ng-click="edit()")
 					i.fa.fa-edit
-				md-button.md-icon-button
+				md-button.md-icon-button(ng-click="delete()")
 					i.fa.fa-trash
 		md-divider
 
