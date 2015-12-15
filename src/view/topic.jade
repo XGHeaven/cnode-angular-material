@@ -12,9 +12,9 @@ md-list
 			h4 最近一次回复 {{last_reply_at | diffDate}}
 			h4
 				| 回复次数: 
-				span.label.label-success {{reply_count}}
+				span.label.label-success {{reply_count || 0}}
 				| , 浏览次数: 
-				span.label.label-primary {{visit_count}}
+				span.label.label-primary {{visit_count || 0}}
 	md-divider
 
 	md-subheader Content
