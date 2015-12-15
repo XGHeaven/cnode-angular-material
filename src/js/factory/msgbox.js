@@ -44,7 +44,7 @@ cnode.factory('Msgbox', ƒ(($mdToast, $mdDialog) => {
 		.ok('确认')
 		.cancel('取消')
 
-		return $mdDialog.show(confim)
+		return $mdDialog.show(confirmDialog)
 	}
 
 	return {
