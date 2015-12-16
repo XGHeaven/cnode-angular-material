@@ -42,9 +42,9 @@ md-list
 					md-tooltip(md-direction="left") Reply
 					i.fa.fa-reply
 			div(ng-switch-when="false" layout="column")
-				md-button.md-icon-button(ng-click="edit()")
+				md-button.md-icon-button(ng-click="edit()" aria-label="edit")
 					i.fa.fa-edit
-				md-button.md-icon-button(ng-click="delete()")
+				md-button.md-icon-button(ng-click="delete()" aria-label="delete")
 					i.fa.fa-trash
 		md-divider
 
