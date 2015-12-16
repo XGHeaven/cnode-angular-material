@@ -13,6 +13,9 @@ md-sidenav.md-sidenav-left.md-whiteframe-z3.fixed(md-component-id="sider" md-is-
 
 		//- only support login in mode
 		md-subheader(ng-if="!!user.loginname") User
+		md-list-item(ng-if="!!user.loginname" ui-sref="main.user({name: user.loginname})" ui-sref-opts="{reload: true}")
+			i.fa.fa-info.md-avatar-icon
+			| 个人信息
 		md-list-item(ng-if="!!user.loginname" ui-sref="main.messages")
 			i.fa.fa-comments.md-avatar-icon
 			| 消息 

@@ -33,6 +33,10 @@ cnode.factory('API', ƒ(($http, $q, User, Msgbox, Setting) => {
 		})
 	}
 
+	function getUser(name) {
+		return $http.get(`${url}/user/${name}`)
+	}
+
 	const postUps = needLogin(function postUps(replyId) {
 		return $http.post(`${url}/reply/${replyId}/ups`, {
 			accesstoken: Setting.accessToken
@@ -120,6 +124,7 @@ cnode.factory('API', ƒ(($http, $q, User, Msgbox, Setting) => {
 	return {
 		getTopics,
 		getTopic,
+		getUser,
 		postUps,
 		postTopicReply,
 		postTopic,

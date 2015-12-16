@@ -56,4 +56,9 @@ cnode.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', ($sta
 		templateUrl: 'view/messages.html',
 		controller: 'MessagesController'
 	})
+	.state('main.user', {
+		url: '/user/:name',
+		templateUrl: 'view/user.html',
+		controller: 'UserController'
+	})
 }])

@@ -1,0 +1,28 @@
+md-card(ng-clock)
+	md-card-title
+		md-card-title-text
+			span.md-headline {{loginname}}
+			span.md-subhead {{create_at | diffDate}} 加入我们这个大家庭
+			span.md-subhead 贡献： {{score || 0}}
+			a.md-button(href="https://github.com/{{loginname}}" ng-if="githubUsername")
+				| Go to 
+				i.fa.fa-github 
+				| {{githubUsername}}
+		md-card-title-media
+			img.md-avatar(src="{{avatar_url}}")
+
+	md-content
+		md-list
+			md-subheader Recent Topics
+			md-list-item.md-2-line(ng-repeat="topic in recent_topics" ui-sref="main.topic({id:topic.id})")
+				img.md-avatar(src="{{topic.author.avatar_url}}")
+				.md-list-item-text
+					| {{topic.title}}
+					p {{topic.last_reply_at | diffDate}}
+
+			md-subheader Recent Reply
+			md-list-item.md-2-line(ng-repeat="topic in recent_replies" ui-sref="main.topic({id:topic.id})")
+				img.md-avatar(src="{{topic.author.avatar_url}}")
+				.md-list-item-text
+					| {{topic.title}}
+					p {{topic.last_reply_at | diffDate}}
