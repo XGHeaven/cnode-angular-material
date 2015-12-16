@@ -16,6 +16,7 @@ import imagemin from 'gulp-imagemin'
 import watch from 'gulp-watch'
 import uglify from 'gulp-uglify'
 import angularInjector from 'gulp-angular-injector'
+import resrc from 'gulp-resrc'
 
 const PRODUCTION = process.env.NODE_ENV && process.env.NODE_ENV.toLowerCase() === 'production';
 const DIST = './dist'
@@ -143,8 +144,12 @@ gulp.task('server', ['build'], () => {
     // gulp.watch(DIST, ['reload'])
 })
 
-gulp.task('deploy', ['build'], () => {
-    return gulp.src(DIST + '/**/*.*').pipe(ghPages())
+gulp.task('predeploy', () => {
+    return gulp.src('CNAME').pipe(gulp.dest(DIST))
+})
+
+gulp.task('deploy', ['build', 'predeploy'], () => {
+    return gulp.src(DIST + '/**/*').pipe(ghPages())
 })
 
 gulp.task('default', ['clean', 'build', 'server', 'watch'])
