@@ -32,7 +32,7 @@ md-list
 			p.cn-content(ng-bind-html="reply.content | removeTail | Markdown")
 		div(ng-switch="reply.author.loginname !== $root.user.loginname")
 			div(ng-switch-when="true" layout="column")
-				md-button.md-icon-button(ng-class="{stared:reply.ups.indexOf(CNUser.id) !== -1, 'fa-spin':reply.loading}" ng-click="star(reply)")
+				md-button.md-icon-button(ng-class="{stared:reply.ups.indexOf($root.user.id) !== -1, 'fa-spin':reply.loading}" ng-click="star(reply)")
 					md-tooltip(md-direction="left") {{reply.ups.length}} Stared
 					i.fa.fa-star
 				md-button(ng-click="replyTo(reply)").md-icon-button
