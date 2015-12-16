@@ -20,6 +20,6 @@ cnode.controller('SiderController', ƒ(($scope) => {
 	}, {
 		title: '招聘',
 		tab: 'job',
-		fa: 'money'
+		fa: 'jpy'
 	}]
 }))
