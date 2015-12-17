@@ -16,7 +16,7 @@ md-tabs.md-primary(md-dynamic-height="true" md-swipe-content="true" md-stretch-t
 								| {{message.author.loginname}} 回复了您 
 								a(ui-sref="main.topic({id:message.topic.id})") {{message.topic.title}}
 								| 的文章 {{message.reply.create_at | diffDate}}
-						div.cn-content.cn-quote(ng-bind-html="message.reply.content | Markdown")
+						div.cn-content.cn-quote(ng-bind-html="message.reply.content | removeTail | Markdown")
 					md-divider
 	md-tab(label="已读消息({{messages.has_read_messages.length}})")
 		md-content
@@ -32,5 +32,5 @@ md-tabs.md-primary(md-dynamic-height="true" md-swipe-content="true" md-stretch-t
 								| {{message.author.loginname}} 回复了您 
 								a(ui-sref="main.topic({id:message.topic.id})") {{message.topic.title}}
 								| 的文章 {{message.reply.create_at | diffDate}}
-						div.cn-content.cn-quote(ng-bind-html="message.reply.content | Markdown")
+						div.cn-content.cn-quote(ng-bind-html="message.reply.content | removeTail | Markdown")
 					md-divider
