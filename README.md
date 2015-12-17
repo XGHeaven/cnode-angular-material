@@ -14,12 +14,13 @@
 
 1. 支持以模态方式打开网页
 2. 支持自动过滤小尾巴
+3. 支持头像代理，用于一些网络不好的地方获取头像
 
 技术栈
 ---
 
 - Angular.JS
-- Angular Material
+- Angular Material(已经更新到了`1.0.0`了，好激动)
 - Gulp
 - Bootstrap(由于Angular Material库很新，所以还需要Bootstrap来补充一下)
 - Babel
