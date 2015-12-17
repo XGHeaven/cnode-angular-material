@@ -15,6 +15,9 @@ form(name="settingForm" ng-submit="save()")
 				div(ng-messages="settingForm.accessToken.$error")
 					div(ng-message="md-maxlength") 您输入的内容过多，请重新输入
 					div(ng-message="pattern") AccessToken格式错误，请重新输入
+		md-list-item
+			p 图片代理访问(加速github, gravatar)
+			md-switch.md-primary(ng-model="setting.avatarProxy")
 		md-divider
 		md-subheader 文章
 		md-list-item
