@@ -3,6 +3,11 @@ import marked from 'marked'
 // only support in nodejs
 import hljs from 'highlight.js'
 
+marked.setOptions({
+	// break link with enter
+	breaks: true
+})
+
 cnode.factory('Marked', [() => {
 	return {
 		render(string) {
