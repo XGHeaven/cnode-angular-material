@@ -8,7 +8,7 @@ cnode.factory('Setting', ƒ(($rootScope, $localStorage, Event) => {
 				pageSize: '15',
 				interval: '300000',
 				autoFilterTail: true,
-				avatarProxy: true
+				avatarProxy: false
 			}
 		})
 	}
