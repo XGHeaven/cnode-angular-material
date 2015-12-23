@@ -10,7 +10,9 @@ md-list
 				cn-label(cn-tab="tab")
 				a(ui-sref="main.user({name: author.loginname})") {{author.loginname}} 
 				small 创建于 {{create_at | date: 'yyyy-MM-dd hh:mm:ss'}}
-			h4 最近一次回复 {{last_reply_at | diffDate}}
+			h4
+				| 最近一次回复 {{last_reply_at | diffDate}} 
+				a.label.label-warning(ng-href="https://cnodejs.org/topic/{{id}}") 在CNode.JS中打开
 			h4
 				| 回复次数: 
 				span.label.label-success {{reply_count || 0}}
