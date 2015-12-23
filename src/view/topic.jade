@@ -4,7 +4,7 @@ md-list
 	md-subheader Author
 	md-list-item.md-3-line
 		a(ui-sref="main.user({name: author.loginname})")
-			img.md-avatar(src="{{author.avatar_url}}")
+			img.md-avatar(ng-src="{{author.avatar_url}}")
 		.md-list-item-text
 			h3
 				cn-label(cn-tab="tab")

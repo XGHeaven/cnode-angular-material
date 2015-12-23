@@ -2,9 +2,10 @@ import cnode from '../cnode'
 
 cnode.controller('RootController', ƒ(($rootScope, $mdSidenav, $mdMedia, Message, Event, Msgbox) => {
 	// instance message
+	console.log($mdMedia)
 
 	$rootScope.toggleSider = () => {
-		if ($mdMedia('gt-md')) { return }
+		if ($mdMedia('md')) { return }
 
 		$mdSidenav('sider')
 		.toggle()
