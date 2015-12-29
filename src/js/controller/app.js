@@ -5,7 +5,7 @@ cnode.controller('RootController', ƒ(($rootScope, $mdSidenav, $mdMedia, Message
 	console.log($mdMedia)
 
 	$rootScope.toggleSider = () => {
-		if ($mdMedia('md')) { return }
+		if ($mdMedia('gt-md')) { return }
 
 		$mdSidenav('sider')
 		.toggle()
