@@ -33,6 +33,7 @@ md-list
 		.md-list-item-text
 			h5 
 				a(ui-sref="main.user({name: reply.author.loginname})") {{reply.author.loginname}} 
+				small {{$index+1}}楼 
 				small 回复时间：{{reply.create_at | diffDate}}
 			p.cn-content(ng-bind-html="reply.content | removeTail | Markdown")
 		div(ng-switch="reply.author.loginname !== $root.user.loginname")
