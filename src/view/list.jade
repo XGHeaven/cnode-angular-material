@@ -13,7 +13,7 @@ md-list
 				| {{item.title}}
 			p {{item.author.loginname}} 发布于 {{item.create_at | diffDate}}
 			p(layout="row" layout-align="center center")
-				span(flex) {{item.last_reply_at | diffDate}}
+				span(flex) 最近回复 {{item.last_reply_at | diffDate}}
 				span.label.cn-label-reply(ng-class="{'label-default':!item.reply_count, 'label-primary': item.reply_count}") {{item.reply_count}} / {{item.visit_count}}
 		md-divider
 	div(ng-repeat-end)
