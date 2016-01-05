@@ -135,9 +135,7 @@ gulp.task('server', ['build'], () => {
         server: {
             baseDir: DIST
         },
-        ui: {
-            port: 8001
-        },
+        ui: false,
         port: 8000
     })
     
