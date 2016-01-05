@@ -17,12 +17,14 @@ import watch from 'gulp-watch'
 import uglify from 'gulp-uglify'
 import angularInjector from 'gulp-angular-injector'
 import resrc from 'gulp-resrc'
+import condition from 'gulp-if'
+import header from 'gulp-header'
 
 const PRODUCTION = process.env.NODE_ENV && process.env.NODE_ENV.toLowerCase() === 'production';
 const DIST = './dist'
 
 gulp.task('es6', () => {
-    let stream = gulp
+    return gulp
     .src('./src/js/main.js')
     .pipe(browserify({
         transform: ['babelify', 'browserify-shim', 'require-globify'],
@@ -32,10 +34,9 @@ gulp.task('es6', () => {
     .pipe(angularInjector({
         token: 'ƒ'
     }))
-
-    if (PRODUCTION) stream = stream.pipe(uglify())
-
-    return stream.pipe(rename('app.js'))
+    .pipe(condition(PRODUCTION, uglify()))
+    .pipe(rename('app.js'))
+    .pipe(condition(PRODUCTION, header('// Made by XGHeaven\n')))
     .pipe(gulp.dest( DIST + '/js/'))
     .pipe(browserSync.stream())
 })
@@ -45,15 +46,16 @@ gulp.task('stylus', () => {
         compress: PRODUCTION
     }
 
-    let source = gulp.src('./src/stylus/**/*.styl');
-
-    if (!PRODUCTION) source = source.pipe(sourcemaps.init())
-    source = source.pipe(stylus(opts))
-    if (!PRODUCTION) source = source.pipe(sourcemaps.write())
-    return source.pipe(concat('app.css'))
+    return gulp
+    .src('./src/stylus/**/*.styl')
+    .pipe(condition(PRODUCTION, sourcemaps.init()))
+    .pipe(stylus(opts))
+    .pipe(condition(PRODUCTION, sourcemaps.write()))
+    pipe(concat('app.css'))
     .pipe(autoprefixer({
         browsers: 'last 2 versions'
     }))
+    .pipe(condition(PRODUCTION, header('/* Made by XGHeaven */\n')))
     .pipe(gulp.dest('./dist/css/'))
     .pipe(browserSync.stream())
 })
@@ -138,8 +140,6 @@ gulp.task('server', ['build'], () => {
         ui: false,
         port: 8000
     })
-    
-    // gulp.watch(DIST, ['reload'])
 })
 
 gulp.task('predeploy', () => {
