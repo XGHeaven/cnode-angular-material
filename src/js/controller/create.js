@@ -7,12 +7,8 @@ cnode.controller('CreateController', ƒ(($scope, tabName, API, $state) => {
 	$scope.togglePreview = () => $scope.preview = !$scope.preview
 
 	$scope.submit = () => {
-		API.postTopic({
-			tab: $scope.tab,
-			title: $scope.title,
-			content: $scope.content
-		}).then(data => {
-			$state.go('main.list.all', {tab: 'all'})
+		API.postTopic($scope.tab, $scope.title, $scope.content).then(data => {
+			$state.go('main.list', {tab: 'all'})
 		})
 	}
 }))
