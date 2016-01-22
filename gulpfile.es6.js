@@ -51,7 +51,7 @@ gulp.task('stylus', () => {
     .pipe(condition(PRODUCTION, sourcemaps.init()))
     .pipe(stylus(opts))
     .pipe(condition(PRODUCTION, sourcemaps.write()))
-    pipe(concat('app.css'))
+    .pipe(concat('app.css'))
     .pipe(autoprefixer({
         browsers: 'last 2 versions'
     }))
