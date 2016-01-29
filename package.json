@@ -12,7 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "angular": "^1.4.9",
-    "angular-material": "^1.0.2",
+    "angular-material": "^1.0.4",
     "angular-aria": "^1.4.9",
     "angular-sanitize": "^1.4.9",
     "angular-messages": "^1.4.9",
