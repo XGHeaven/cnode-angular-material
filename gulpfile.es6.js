@@ -74,7 +74,7 @@ gulp.task('cdn', () => {
         'angular-animate/angular-animate',
         'angular-aria/angular-aria',
         'angular-material/angular-material',
-        'angular-ui-router/build/angular-ui-router',
+        'angular-ui-router/release/angular-ui-router',
         'angular-sanitize/angular-sanitize',
         'angular-messages/angular-messages',
         'ngstorage/ngStorage',
