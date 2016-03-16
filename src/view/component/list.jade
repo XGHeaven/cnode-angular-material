@@ -1,6 +1,6 @@
 md-list
 	div(ng-repeat-start="items in pages")
-	md-subheader 第 {{$index+1}} 页
+	md-subheader(ng-if="!loadDisable") 第 {{$index+1}} 页
 	md-divider
 	md-list-item.md-3-line(ng-repeat="item in items" ng-click="open($event,item.id)" ng-class="{'md-whiteframe-z2': item.top}")
 		img.md-avatar(ng-src="{{item.author.avatar_url}}" ng-class="{'cn-avatar-top': item.top}")
@@ -15,8 +15,8 @@ md-list
 				span.label.cn-label-reply(ng-class="{'label-default':!item.reply_count, 'label-primary': item.reply_count}") {{item.reply_count}} / {{item.visit_count}}
 		md-divider
 	div(ng-repeat-end)
-	md-list-item(ng-click="loadMore()") 
+	md-list-item(ng-click="loadMore()" ng-if="!loadDisable")
 		md-list-item-text.text-center(flex)
 			h4 
 				| 加载更多 
-				i(ng-show="topicLoading").fa.fa-spinner.fa-pulse
+				i(ng-show="loading").fa.fa-spinner.fa-pulse

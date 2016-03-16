@@ -12,11 +12,14 @@ md-sidenav.md-sidenav-left.md-whiteframe-z3.fixed(md-component-id="sider" md-is-
 			| {{nav.title}}
 
 		//- only support login in mode
-		md-subheader(ng-if="!!user.loginname") User
-		md-list-item(ng-if="!!user.loginname" ui-sref="main.user({name: user.loginname})" ui-sref-opts="{reload: true}")
+		md-subheader(ng-if="isLogin()") User
+		md-list-item(ng-if="isLogin()" ui-sref="main.user({name: user.loginname})" ui-sref-opts="{reload: true}")
 			i.fa.fa-fw.fa-user.md-avatar-icon
 			| 个人信息
-		md-list-item(ng-if="!!user.loginname" ui-sref="main.messages")
+		md-list-item(ng-if="isLogin()" ui-sref="main.collection({name: user.loginname})" ui-sref-opts="{reload: true}")
+			i.fa.fa-fw.fa-user.md-avatar-icon
+			| 收藏列表
+		md-list-item(ng-if="isLogin()" ui-sref="main.messages")
 			i.fa.fa-fw.fa-comments.md-avatar-icon
 			| 消息 
 			span.md-secondary(ng-show="messages.hasnot_read_messages" ng-class="{'label-default': !messages.hasnot_read_messages.length, 'label-success': messages.hasnot_read_messages.length}").label {{messages.hasnot_read_messages.length}}

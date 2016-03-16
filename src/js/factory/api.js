@@ -154,6 +154,16 @@ cnode.factory('API', ƒ(($http, $q, User, Msgbox, Setting) => {
 		})
 	})
 
+	const getCollection = function(user, page = 1, limit = parseInt(Setting.pageSize, 10) || 15) {
+		return $http.get(`${url}/topic_collect/${user}`, {
+			params: {
+				page,
+				limit,
+				mdrender: false
+			}
+		})
+	}
+
 	return {
 		getTopics,
 		getTopic,
@@ -164,6 +174,7 @@ cnode.factory('API', ƒ(($http, $q, User, Msgbox, Setting) => {
 		getMessages,
 		postMarkAll,
 		postCollect,
-		postDeCollect
+		postDeCollect,
+		getCollection
 	}
 }))

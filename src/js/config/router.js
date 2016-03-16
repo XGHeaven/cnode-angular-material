@@ -61,4 +61,9 @@ cnode.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', ($sta
 		templateUrl: 'view/user.html',
 		controller: 'UserController'
 	})
+	.state('main.collection', {
+		url: '/collection/:name',
+		templateUrl: 'view/collection.html',
+		controller: 'CollectionController'
+	})
 }])
