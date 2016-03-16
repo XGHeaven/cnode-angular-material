@@ -1,24 +1,3 @@
 md-button.md-fab.md-fab-bottom-right.md-primary.cn-fixed(ui-sref="main.create" aria-label="create")
 	i.fa.fa-plus
-md-list
-	div(ng-repeat-start="items in pages")
-	md-subheader 第 {{$index+1}} 页
-	md-divider
-	md-list-item.md-3-line(ng-repeat="item in items" ng-click="showTopic($event,item.id)" ng-class="{'md-whiteframe-z2': item.top}")
-		img.md-avatar(ng-src="{{item.author.avatar_url}}" ng-class="{'cn-avatar-top': item.top}")
-		.md-list-item-text(layout="column")
-			h3.cn-list-header
-				cn-label(cn-tab="item.tab")
-				span.label.label-success(ng-if="item.good") 精华
-				| {{item.title}}
-			p {{item.author.loginname}} 发布于 {{item.create_at | diffDate}}
-			p(layout="row" layout-align="center center")
-				span(flex) 最近回复 {{item.last_reply_at | diffDate}}
-				span.label.cn-label-reply(ng-class="{'label-default':!item.reply_count, 'label-primary': item.reply_count}") {{item.reply_count}} / {{item.visit_count}}
-		md-divider
-	div(ng-repeat-end)
-	md-list-item(ng-click="loadMore()") 
-		md-list-item-text.text-center(flex)
-			h4 
-				| 加载更多 
-				i(ng-show="topicLoading").fa.fa-spinner.fa-pulse
+cn-tab(cn-pages={{pages}} cn-load="loadMore" cn-open="showTopic" cn-tab="tab")
