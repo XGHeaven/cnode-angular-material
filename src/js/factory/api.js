@@ -28,7 +28,8 @@ cnode.factory('API', ƒ(($http, $q, User, Msgbox, Setting) => {
 	function getTopic(id) {
 		return $http.get(url + '/topic/' + id, {
 			params: {
-				mdrender: false
+				mdrender: false,
+				accesstoken: Setting.accessToken
 			}
 		})
 	}
@@ -121,6 +122,38 @@ cnode.factory('API', ƒ(($http, $q, User, Msgbox, Setting) => {
 		})
 	})
 
+	const postCollect = needLogin(function postCollect(topicId) {
+		return $http.post(`${url}/topic_collect/collect`, {
+			accesstoken: Setting.accessToken,
+			topic_id: topicId
+		}).then(res => {
+			if (res.data.success) {
+				Msgbox.alert('收藏文章成功')
+				return res
+			}
+			return $q.reject(res)
+		}).catch(err => {
+			Msgbox.alert('收藏失败');
+			return $q.reject(err)
+		})
+	})
+
+	const postDeCollect = needLogin(function postDeCollect(topicId) {
+		return $http.post(`${url}/topic_collect/de_collect`, {
+			accesstoken: Setting.accessToken,
+			topic_id: topicId
+		}).then(res => {
+			if (res.data.success) {
+				Msgbox.alert('取消收藏文章成功')
+				return res
+			}
+			return $q.reject(res)
+		}).catch(err => {
+			Msgbox.alert('收藏失败');
+			return $q.reject(err)
+		})
+	})
+
 	return {
 		getTopics,
 		getTopic,
@@ -129,6 +162,8 @@ cnode.factory('API', ƒ(($http, $q, User, Msgbox, Setting) => {
 		postTopicReply,
 		postTopic,
 		getMessages,
-		postMarkAll
+		postMarkAll,
+		postCollect,
+		postDeCollect
 	}
 }))
