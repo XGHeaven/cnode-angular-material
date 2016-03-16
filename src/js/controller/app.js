@@ -21,5 +21,7 @@ cnode.controller('RootController', ƒ(($rootScope, $mdSidenav, $mdMedia, Message
 		})
 	}
 
+	$rootScope.isLogin = () => !!$rootScope.user.id;
+
 	$rootScope.event = Event
 }))

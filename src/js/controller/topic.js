@@ -60,6 +60,23 @@ cnode.controller('TopicController', ['$scope', 'API', '$state', 'User', 'Msgbox'
 		document.getElementById('replyText').focus()
 	}
 
+	$scope.collect = () => {
+		if ($scope.collecting) return
+
+		if (!$scope.is_collect) {
+			API.postCollect($scope.id).then(() => {
+				$scope.is_collect = true
+				$scope.collecting = false
+			})
+		} else {
+			API.postDeCollect($scope.id).then(() => {
+				$scope.is_collect = false
+				$scope.collecting = false
+			})
+		}
+		$scope.collecting = true;
+	}
+
 	$scope.removeReplyFor = () => $scope.replyFor = void 0
 
 	$scope.delete = Msgbox.unSupport

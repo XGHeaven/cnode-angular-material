@@ -32,3 +32,8 @@ md-dialog, md-content, md-list
 	margin 0 0 15px
 	p 
 		margin 3px 0
+		
+for dir in top bottom left right
+	for size in 1 2 3
+		.cn-{dir}-offset-{size}
+			{dir}: (size * (56px + 20px) + 20px) !important

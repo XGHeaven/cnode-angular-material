@@ -1,5 +1,7 @@
 md-button.md-fab.md-fab-bottom-right.md-primary.cn-fixed(ng-click="focusReply()" aria-label="Reply")
 	i.fa.fa-reply
+md-button.md-fab.md-fab-bottom-right.cn-fixed.cn-bottom-offset-1(ng-click="collect()" aria-label="Collect" ng-show="isLogin()")
+	i.fa(ng-class="{'fa-star': is_collect, 'fa-star-o': !is_collect}")
 md-list
 	md-subheader Author
 	md-list-item.md-3-line
