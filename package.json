@@ -16,7 +16,7 @@
     "angular-aria": "^1.5.5",
     "angular-animate": "^1.5.3",
     "angular-messages": "^1.5.5",
-    "angular-sanitize": "^1.5.3",
+    "angular-sanitize": "^1.5.5",
     "angular-ui-router": "^0.2.18",
     "bootstrap": "^3.3.6",
     "font-awesome": "^4.6.1",
