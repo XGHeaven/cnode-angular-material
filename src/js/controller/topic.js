@@ -1,10 +1,28 @@
 import cnode from '../cnode'
 import angular from 'angular'
 
-cnode.controller('TopicController', ['$scope', 'API', '$state', 'User', 'Msgbox', ($scope, API, $state, User, Msgbox) => {
+cnode.controller('TopicController', ƒ(($scope, API, $state, User, Msgbox, hotkeys) => {
 	$scope.replyPreview = false
 	$scope.togglePreview = () => ($scope.replyPreview = !$scope.replyPreview)
 	$scope.replyText = $scope.replyFor = void 0
+
+	// setup topic hotkey
+	hotkeys.add({
+		combo: 'r',
+		description: '回复当前帖子',
+		callback(event, hotkey) {
+			event.preventDefault();
+			console.log(hotkey);
+			$scope.focusReply();
+		}
+	});
+	hotkeys.add({
+		combo: 'c',
+	 	description: '收藏当前帖子',
+		callback(e, h) {
+			$scope.collect();
+		}
+	})
 
 	// use in dialog and router
 	API.getTopic($state.params.id || $scope.id).success(data => {
@@ -81,4 +99,4 @@ cnode.controller('TopicController', ['$scope', 'API', '$state', 'User', 'Msgbox'
 
 	$scope.delete = Msgbox.unSupport
 	$scope.edit = Msgbox.unSupport
-}])
+}));

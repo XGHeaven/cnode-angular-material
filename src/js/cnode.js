@@ -6,7 +6,8 @@ let cnode = angular.module('cnode', [
 	'ngMaterial',
 	'ngSanitize',
 	'ngMessages',
-	'ngStorage'
+	'ngStorage',
+	'cfp.hotkeys'
 ])
 
 export default cnode

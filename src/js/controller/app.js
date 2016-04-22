@@ -1,8 +1,11 @@
 import cnode from '../cnode'
 
-cnode.controller('RootController', ƒ(($rootScope, $mdSidenav, $mdMedia, Message, Event, Msgbox) => {
+cnode.controller('RootController', ƒ((
+		$rootScope, $mdSidenav, $mdMedia, $state,
+		Message, Event, Msgbox, hotkeys, TopicType
+	) => {
 	// instance message
-	console.log($mdMedia)
+	// console.log($mdMedia)
 
 	$rootScope.toggleSider = () => {
 		if ($mdMedia('gt-md')) { return }
@@ -23,5 +26,31 @@ cnode.controller('RootController', ƒ(($rootScope, $mdSidenav, $mdMedia, Message
 
 	$rootScope.isLogin = () => !!$rootScope.user.id;
 
+	// setup global shortcut
+	hotkeys.add({
+		combo: 'm',
+		description: '打开消息(message)',
+		callback(event, hotkey) {
+			$state.go('main.messages');
+		}
+	});
+	hotkeys.add({
+		combo: 's',
+		description: '打开设置面板(setting)',
+		callback(event, hotkey) {
+			$state.go('main.setting');
+		}
+	});
+	TopicType.forEach((topic, i) => {
+		hotkeys.add({
+			combo: i + 1 + '',
+			description: `打开 ${topic.title}`,
+			callback(e, h) {
+				e.preventDefault();
+				$state.go('main.list', {tab: topic.tab});
+			}
+		});
+	});
+	console.log(hotkeys);
 	$rootScope.event = Event
 }))

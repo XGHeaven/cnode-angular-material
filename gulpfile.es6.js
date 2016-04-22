@@ -77,6 +77,7 @@ gulp.task('cdn', () => {
         'angular-ui-router/release/angular-ui-router',
         'angular-sanitize/angular-sanitize',
         'angular-messages/angular-messages',
+        'angular-hotkeys/build/hotkeys',
         'ngstorage/ngStorage',
         'marked/marked'
         ].map(addMin('.js'))
@@ -84,7 +85,8 @@ gulp.task('cdn', () => {
         'angular-material/angular-material',
         'angular-material/angular-material.layouts',
         'bootstrap/dist/css/bootstrap',
-        'font-awesome/css/font-awesome'
+        'font-awesome/css/font-awesome',
+        'angular-hotkeys/build/hotkeys'
         ].map(addMin('.css')).concat([
             './node_modules/highlight.js/styles/default.css'
         ])
@@ -93,11 +95,11 @@ gulp.task('cdn', () => {
         'bootstrap/dist/fonts/*.*',
         'font-awesome/fonts/*.*'
     ].map(f => './node_modules/' + f)
-    
+
     gulp.src(jsFiles).pipe(gulp.dest(DIST + '/js/'))
     gulp.src(cssFiles).pipe(gulp.dest(DIST + '/css/'))
     gulp.src(fontFiles).pipe(gulp.dest(DIST + '/fonts/'))
-    
+
     function addMin(suffix) {
         return function(file) {
             return './node_modules/' + file + '.min' + suffix;
