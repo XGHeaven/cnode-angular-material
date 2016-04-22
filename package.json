@@ -44,6 +44,7 @@
     "gulp-if": "^2.0.0",
     "gulp-imagemin": "^2.4.0",
     "gulp-jade": "^1.1.0",
+    "gulp-plumber": "^1.1.0",
     "gulp-rename": "^1.2.2",
     "gulp-resrc": "^0.1.0",
     "gulp-sourcemaps": "^1.6.0",

@@ -19,6 +19,7 @@ import angularInjector from 'gulp-angular-injector'
 import resrc from 'gulp-resrc'
 import condition from 'gulp-if'
 import header from 'gulp-header'
+import plumber from 'gulp-plumber'
 
 const PRODUCTION = process.env.NODE_ENV && process.env.NODE_ENV.toLowerCase() === 'production';
 const DIST = './dist'
@@ -26,11 +27,11 @@ const DIST = './dist'
 gulp.task('es6', () => {
     return gulp
     .src('./src/js/main.js')
+    .pipe(plumber())
     .pipe(browserify({
         transform: ['babelify', 'browserify-shim', 'require-globify'],
         debug: !PRODUCTION
     }))
-    .on('error', err => console.error(err.stack))
     .pipe(angularInjector({
         token: 'ƒ'
     }))
@@ -48,6 +49,7 @@ gulp.task('stylus', () => {
 
     return gulp
     .src('./src/stylus/**/*.styl')
+    .pipe(plumber())
     .pipe(condition(PRODUCTION, sourcemaps.init()))
     .pipe(stylus(opts))
     .pipe(condition(PRODUCTION, sourcemaps.write()))
@@ -112,21 +114,34 @@ gulp.task('clean', () => {
 })
 
 gulp.task('view', () => {
-    return es.merge(
-        gulp.src(['./src/view/**/*.html'], {base: 'src'}),
-        gulp.src('./src/*.html'),
-        gulp.src(['./src/view/**/*.jade'], {base: 'src'}).pipe(jade())
-        .on('error', console.error.bind(console))
-    ).pipe(gulp.dest(DIST))
-    .pipe(browserSync.stream())
+  gulp.run(['html', 'pug'])
+})
+
+gulp.task('html', () => {
+  return es.merge(
+    gulp.src('./src/view/**/*.html', {base: 'src'}),
+    gulp.src('./src/*.html')
+  ).pipe(gulp.dest(DIST))
+  .pipe(browserSync.stream())
+})
+
+gulp.task('pug', () => {
+  return gulp
+  .src('./src/view/**/*.jade', {base: 'src'})
+  .pipe(plumber())
+  .pipe(jade())
+  .pipe(gulp.dest(DIST))
+  .pipe(browserSync.stream())
 })
 
 gulp.task('build', ['clean', 'es6', 'stylus', 'view', 'cdn', 'image'])
 
 gulp.task('watch', () => {
+    // gulp run is deprecated before 4.0
     watch('./src/js/**/*.js', () => gulp.run(['es6']))
     watch('./src/stylus/**/*.styl', () => gulp.run(['stylus']))
-    watch(['./src/**/*.html', './src/**/*.jade'], () => gulp.run(['view']))
+    watch('./src/**/*.jade', () => gulp.run(['pug']))
+    watch('./src/**/*.html', () => gulp.run(['html']))
     watch('./src/image/**/*', () => gulp.run(['image']))
 })
 
