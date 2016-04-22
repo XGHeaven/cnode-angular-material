@@ -1,18 +1,7 @@
 md-tabs.md-primary(md-dynamic-height md-stretch-tabs="always")
 	md-tab(label="这是啥")
 		md-content.md-padding
-			h2 这是我个人兴趣写的一个页面
-			p 目的就是可以取代CNode原本的那个很一般而且旁边都是广告的页面
-			p 主要是使用 Angular Material
-			p 犹豫我个人审美有问题，所以可能不是很好看
-	md-tab(label="你喜欢么？")
-		md-content.md-padding
-			h2 如果你喜欢的话，那么就赶紧加入我们
-			p 虽然现在只有我一个人。。。
-			p 点击下面的github网址进入
-			md-button(href="https://github.com/XGHeaven/cnode-angular-material")
-				i.fa.fa-github
-				| GitHub
+			include:marked ../../README.md
 	md-tab(label="上榜者")
 		md-content.md-padding
 			md-list
@@ -24,3 +13,26 @@ md-tabs.md-primary(md-dynamic-height md-stretch-tabs="always")
 				md-subheader Contributor
 				md-list-item
 					p None
+	md-tab(label="License")
+		md-content
+			p The MIT License (MIT)
+
+			p Copyright (c) 2016 XGHeaven
+
+			p Permission is hereby granted, free of charge, to any person obtaining a copy
+			p of this software and associated documentation files (the "Software"), to deal
+			p in the Software without restriction, including without limitation the rights
+			p to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+			p copies of the Software, and to permit persons to whom the Software is
+			p furnished to do so, subject to the following conditions:
+
+			p The above copyright notice and this permission notice shall be included in all
+			p copies or substantial portions of the Software.
+
+			p THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+			p IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+			p FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+			p AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+			p LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+			p OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+			p SOFTWARE.
