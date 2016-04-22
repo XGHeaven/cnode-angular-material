@@ -1,7 +1,7 @@
 import cnode from '../cnode'
 
 cnode.controller('RootController', ƒ((
-		$rootScope, $mdSidenav, $mdMedia, $state,
+		$rootScope, $mdSidenav, $mdMedia, $state, $localStorage, $timeout,
 		Message, Event, Msgbox, hotkeys, TopicType
 	) => {
 	// instance message
@@ -51,6 +51,14 @@ cnode.controller('RootController', ƒ((
 			}
 		});
 	});
-	console.log(hotkeys);
+
+	// wait for 5s to show keyboard help
+	$timeout(() => {
+		if (!$localStorage.ifShownHotkeysHelp) {
+			Msgbox.show('输入 ? 查看键盘快捷键帮助', 5000);
+			$localStorage.ifShownHotkeysHelp = true;
+		}
+	}, 7000);
+
 	$rootScope.event = Event
 }))
