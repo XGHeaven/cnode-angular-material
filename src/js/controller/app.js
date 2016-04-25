@@ -1,6 +1,6 @@
 import cnode from '../cnode'
 
-cnode.controller('RootController', ƒ((
+cnode.controller('RootController', (
 		$rootScope, $mdSidenav, $mdMedia, $state, $localStorage, $timeout,
 		Message, Event, Msgbox, hotkeys, TopicType
 	) => {
@@ -61,4 +61,4 @@ cnode.controller('RootController', ƒ((
 	}, 7000);
 
 	$rootScope.event = Event
-}))
+})

@@ -1,11 +1,11 @@
 import cnode from '../cnode'
 
-cnode.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', ($stateProvider, $urlRouterProvider, $locationProvider) => {
-	
+cnode.config(($stateProvider, $urlRouterProvider, $locationProvider) => {
+
 	// $locationProvider.html5Mode(true)
-	
+
 	$urlRouterProvider.otherwise('/main/list/all')
-	
+
 	$stateProvider
 	.state('main', {
 		url: '/main',
@@ -66,4 +66,4 @@ cnode.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', ($sta
 		templateUrl: 'view/collection.html',
 		controller: 'CollectionController'
 	})
-}])
+})

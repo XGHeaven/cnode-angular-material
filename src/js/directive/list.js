@@ -1,6 +1,6 @@
 import cnode from '../cnode'
 
-cnode.directive('cnList', [function() {
+cnode.directive('cnList', function() {
 	return {
 		restrict: 'E',
 		templateUrl: 'view/component/list.html',
@@ -11,7 +11,7 @@ cnode.directive('cnList', [function() {
 			// 是否允许显示加载更多
 			loadDisable: '=cnLoadDisable'
 		},
-		controller: ƒ(($scope) => {
+		controller: ($scope) => {
 			$scope.pages = [];
 
 			$scope.loadMore = () => {
@@ -24,6 +24,6 @@ cnode.directive('cnList', [function() {
 			}
 
 			$scope.load(1).then(data => $scope.pages.push(data))
-		})
+		}
 	}
-}])
+})

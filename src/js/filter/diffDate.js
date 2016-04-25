@@ -1,6 +1,6 @@
 import cnode from '../cnode'
 
-cnode.filter('diffDate', [() => {
+cnode.filter('diffDate', () => {
 	return (date) => {
 		let diff = (Date.now() - (new Date(date).getTime())) / 1000
 		switch(true) {
@@ -20,4 +20,4 @@ cnode.filter('diffDate', [() => {
 				return (parseInt(diff) || 0) + ' 年以前'
 		}
 	}
-}])
+})

@@ -1,6 +1,6 @@
 import cnode from '../cnode'
 
-cnode.factory('Setting', ƒ(($rootScope, $localStorage, Event) => {
+cnode.factory('Setting', ($rootScope, $localStorage, Event) => {
 	// set default value
 	function setDefault() {
 		$localStorage.$default({
@@ -71,4 +71,4 @@ cnode.factory('Setting', ƒ(($rootScope, $localStorage, Event) => {
 	})
 
 	return setting;
-}))
+})

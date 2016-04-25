@@ -1,7 +1,7 @@
 import cnode from '../cnode'
 import angular from 'angular'
 
-cnode.controller('TopicController', ƒ(($scope, API, $state, User, Msgbox, hotkeys) => {
+cnode.controller('TopicController', ($scope, API, $state, User, Msgbox, hotkeys) => {
 	$scope.replyPreview = false
 	$scope.togglePreview = () => ($scope.replyPreview = !$scope.replyPreview)
 	$scope.replyText = $scope.replyFor = void 0
@@ -99,4 +99,4 @@ cnode.controller('TopicController', ƒ(($scope, API, $state, User, Msgbox, hotke
 
 	$scope.delete = Msgbox.unSupport
 	$scope.edit = Msgbox.unSupport
-}));
+})

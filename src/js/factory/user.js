@@ -1,6 +1,6 @@
 import cnode from '../cnode'
 
-cnode.factory('User', ƒ(($http, $q, $rootScope, $localStorage, Msgbox, Setting, Event) => {
+cnode.factory('User', ($http, $q, $rootScope, $localStorage, Msgbox, Setting, Event) => {
 	let user = $localStorage.user || {}
 
 	$rootScope.user = user
@@ -78,4 +78,4 @@ cnode.factory('User', ƒ(($http, $q, $rootScope, $localStorage, Msgbox, Setting,
 			return user
 		}
 	}
-}))
+})

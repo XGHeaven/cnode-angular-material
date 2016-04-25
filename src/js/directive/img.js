@@ -1,7 +1,7 @@
 import cnode from '../cnode'
 
 // proxy avatar link
-cnode.directive('img', ƒ((Setting) => {
+cnode.directive('img', (Setting) => {
 	return {
 		restrict: 'E',
 		priority: 300,
@@ -14,4 +14,4 @@ cnode.directive('img', ƒ((Setting) => {
 			}
 		}
 	}
-}))
+})

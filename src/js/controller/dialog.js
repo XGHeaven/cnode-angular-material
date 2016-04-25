@@ -1,7 +1,7 @@
 import cnode from '../cnode'
 import angular from 'angular'
 
-cnode.controller('TopicDialogController', ƒ(($scope, $mdDialog, API, TopicID, $state) => {
+cnode.controller('TopicDialogController', ($scope, $mdDialog, API, TopicID, $state) => {
 	// for convinence
 	let id = TopicID
 
@@ -21,4 +21,4 @@ cnode.controller('TopicDialogController', ƒ(($scope, $mdDialog, API, TopicID, $
 	$scope.close = () => {
 		$mdDialog.hide()
 	}
-}))
+})

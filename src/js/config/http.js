@@ -1,6 +1,6 @@
 import cnode from '../cnode'
 
-cnode.config(['$httpProvider', ($httpProvider) => {
+cnode.config(($httpProvider) => {
 	$httpProvider.interceptors.push(['$q', '$rootScope', ($q, $rootScope) => {
 		function request(config) {
 			start()
@@ -36,4 +36,4 @@ cnode.config(['$httpProvider', ($httpProvider) => {
 			responseError
 		}
 	}])
-}])
+})

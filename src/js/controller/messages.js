@@ -1,6 +1,6 @@
 import cnode from '../cnode'
 
-cnode.controller('MessagesController', ƒ(($scope, API, Message) => {
+cnode.controller('MessagesController', ($scope, API, Message) => {
 	// check
 	Message.check()
 
@@ -10,4 +10,4 @@ cnode.controller('MessagesController', ƒ(($scope, API, Message) => {
 			Message.hasnot_read_messages.length = 0
 		})
 	}
-}))
+})

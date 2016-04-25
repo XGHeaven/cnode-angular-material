@@ -1,7 +1,7 @@
 import gulp from 'gulp'
 import babelify from 'babelify'
 import browserSync from 'browser-sync'
-import browserify from 'gulp-browserify'
+import browserify from 'browserify'
 import browserifyShim from 'browserify-shim'
 import rename from 'gulp-rename'
 import stylus from 'gulp-stylus'
@@ -15,26 +15,29 @@ import sourcemaps from 'gulp-sourcemaps'
 import imagemin from 'gulp-imagemin'
 import watch from 'gulp-watch'
 import uglify from 'gulp-uglify'
-import angularInjector from 'gulp-angular-injector'
 import resrc from 'gulp-resrc'
 import condition from 'gulp-if'
 import header from 'gulp-header'
 import plumber from 'gulp-plumber'
+import source from 'vinyl-source-stream'
+import ngAnnotate from 'gulp-ng-annotate'
+import gutil from 'gulp-util'
 
 const PRODUCTION = process.env.NODE_ENV && process.env.NODE_ENV.toLowerCase() === 'production';
 const DIST = './dist'
 
 gulp.task('es6', () => {
-    return gulp
-    .src('./src/js/main.js')
-    .pipe(plumber())
-    .pipe(browserify({
-        transform: ['babelify', 'browserify-shim', 'require-globify'],
+    return browserify('./src/js/main.js', {
+        transform: ['babelify', 'require-globify', 'browserify-shim'],
         debug: !PRODUCTION
-    }))
-    .pipe(angularInjector({
-        token: 'ƒ'
-    }))
+    })
+    .bundle()
+    // this must to listen error event, can't use plumber
+    // use gutil and console to pretty error output
+    .on('error', err => gutil.log(err.message) & console.log(err.codeFrame))
+    .pipe(plumber())
+    .pipe(source('app.js'))
+    .pipe(ngAnnotate())
     .pipe(condition(PRODUCTION, uglify()))
     .pipe(rename('app.js'))
     .pipe(condition(PRODUCTION, header('// Made by XGHeaven\n')))

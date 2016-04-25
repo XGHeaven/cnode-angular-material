@@ -1,5 +1,5 @@
 import cnode from '../cnode'
 
-cnode.filter('encodeURIComponent', ƒ(() => {
+cnode.filter('encodeURIComponent', () => {
 	return window.encodeURIComponent
-}))
+})

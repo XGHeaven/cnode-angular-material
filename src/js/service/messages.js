@@ -1,6 +1,6 @@
 import cnode from '../cnode'
 
-cnode.service('Message', ƒ(function($timeout, $rootScope, API, Setting, Event){
+cnode.service('Message', function($timeout, $rootScope, API, Setting, Event){
 	let status = false
 	let timer = null
 
@@ -36,4 +36,4 @@ cnode.service('Message', ƒ(function($timeout, $rootScope, API, Setting, Event){
 			else timer = null
 		})
 	}
-}))
+})

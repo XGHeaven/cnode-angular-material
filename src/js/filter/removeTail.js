@@ -1,6 +1,6 @@
 import cnode from '../cnode'
 
-cnode.filter('removeTail', ƒ(() => {
+cnode.filter('removeTail', () => {
 	return function(string) {
 		// Material App
 		string = string.replace('来自酷炫的 [CNodeMD](https://github.com/TakWolf/CNode-Material-Design)', '')
@@ -11,4 +11,4 @@ cnode.filter('removeTail', ƒ(() => {
 
 		return string
 	}
-}))
+})

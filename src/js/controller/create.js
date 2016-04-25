@@ -1,6 +1,6 @@
 import cnode from '../cnode'
 
-cnode.controller('CreateController', ƒ(($scope, tabName, API, $state) => {
+cnode.controller('CreateController', ($scope, tabName, API, $state) => {
 	$scope.tabs = [...tabName].filter(tab => tab[0] !== 'unknow' && tab[0] !== 'top' && tab[0] !== 'good')
 
 	$scope.preview = false
@@ -11,4 +11,4 @@ cnode.controller('CreateController', ƒ(($scope, tabName, API, $state) => {
 			$state.go('main.list', {tab: 'all'})
 		})
 	}
-}))
+})

@@ -1,6 +1,6 @@
 import cnode from '../cnode'
 
-cnode.filter('Markdown', ƒ((Marked) => {
+cnode.filter('Markdown', (Marked) => {
 	return (string) => {
 		if (!string) return ''
 
@@ -10,4 +10,4 @@ cnode.filter('Markdown', ƒ((Marked) => {
 
 		return Marked.render(string)
 	}
-}))
+})

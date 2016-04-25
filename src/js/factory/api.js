@@ -1,6 +1,6 @@
 import cnode from '../cnode'
 
-cnode.factory('API', ƒ(($http, $q, User, Msgbox, Setting) => {
+cnode.factory('API', ($http, $q, User, Msgbox, Setting) => {
 	const url = 'https://cnodejs.org/api/v1'
 
 	function needLogin(fn) {
@@ -24,7 +24,7 @@ cnode.factory('API', ƒ(($http, $q, User, Msgbox, Setting) => {
 			}
 		})
 	}
-	
+
 	function getTopic(id) {
 		return $http.get(url + '/topic/' + id, {
 			params: {
@@ -45,7 +45,7 @@ cnode.factory('API', ƒ(($http, $q, User, Msgbox, Setting) => {
 			if (!res.data.success) {
 				return $q.reject(res)
 			}
-			
+
 			switch(res.data.action) {
 				case 'up':
 					Msgbox.alert('点赞成功')
@@ -177,4 +177,4 @@ cnode.factory('API', ƒ(($http, $q, User, Msgbox, Setting) => {
 		postDeCollect,
 		getCollection
 	}
-}))
+})

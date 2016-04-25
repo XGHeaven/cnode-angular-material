@@ -8,7 +8,7 @@ marked.setOptions({
 	breaks: true
 })
 
-cnode.factory('Marked', [() => {
+cnode.factory('Marked', () => {
 	return {
 		render(string) {
 			if (!string) {
@@ -21,14 +21,14 @@ cnode.factory('Marked', [() => {
 							return hljs.highlight(lang, string).value
 						} catch(e) {}
 					}
-					
+
 					try {
 						return hljs.highlightAuto(string).value
 					} catch(e) {}
-					
+
 					return ''
 				}
 			})
 		}
 	}
-}])
+})

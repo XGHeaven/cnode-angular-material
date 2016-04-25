@@ -1,7 +1,7 @@
 import cnode from '../cnode'
 import angular from 'angular'
 
-cnode.controller('ListController', ƒ(($scope, $mdDialog, $state, API, $mdMedia, Setting) => {
+cnode.controller('ListController', ($scope, $mdDialog, $state, API, $mdMedia, Setting) => {
 	const tab = $state.params.tab || 'all'
 
 	$scope.gotoTopic = id => {
@@ -28,9 +28,9 @@ cnode.controller('ListController', ƒ(($scope, $mdDialog, $state, API, $mdMedia,
 				TopicID: id
 			}
 		}).then(answer => {
-			
+
 		}, () => {
-			
+
 		})
 	}
-}))
+})

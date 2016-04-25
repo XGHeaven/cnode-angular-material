@@ -1,6 +1,6 @@
 import cnode from '../cnode'
 
-cnode.factory('Msgbox', ƒ(($mdToast, $mdDialog) => {
+cnode.factory('Msgbox', ($mdToast, $mdDialog) => {
 
 	/**
 	 * msg {String} msg to show
@@ -59,4 +59,4 @@ cnode.factory('Msgbox', ƒ(($mdToast, $mdDialog) => {
 		unSupport,
 		confirm
 	}
-}))
+})
