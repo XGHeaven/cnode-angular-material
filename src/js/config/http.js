@@ -14,7 +14,7 @@ cnode.config(($httpProvider) => {
 
 		function response(res) {
 			stop()
-			return res;
+			return res
 		}
 
 		function responseError(rejection) {

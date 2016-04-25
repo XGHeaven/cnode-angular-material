@@ -12,14 +12,14 @@ cnode.directive('cnList', function() {
 			loadDisable: '=cnLoadDisable'
 		},
 		controller: ($scope) => {
-			$scope.pages = [];
+			$scope.pages = []
 
 			$scope.loadMore = () => {
-				$scope.loading = true;
+				$scope.loading = true
 				$scope.load($scope.pages.length + 1).then(data => {
-					$scope.pages.push(data);
+					$scope.pages.push(data)
 				}).finally(() => {
-					$scope.loading = false;
+					$scope.loading = false
 				})
 			}
 

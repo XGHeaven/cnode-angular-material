@@ -1,4 +1,5 @@
 import cnode from '../cnode'
+import angular from 'angular'
 
 cnode.factory('Setting', ($rootScope, $localStorage, Event) => {
 	// set default value
@@ -39,7 +40,7 @@ cnode.factory('Setting', ($rootScope, $localStorage, Event) => {
 			Object.keys(setting).filter(key => key[0] != '$').forEach(key => {
 				angular.extend(obj, {[key]: setting[key]})
 			})
-			return obj;
+			return obj
 		},
 		writable: false,
 		enumerable: false,
@@ -70,5 +71,5 @@ cnode.factory('Setting', ($rootScope, $localStorage, Event) => {
 		setDefault()
 	})
 
-	return setting;
+	return setting
 })

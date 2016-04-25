@@ -19,12 +19,12 @@ cnode.factory('Marked', () => {
 					if (lang && hljs.getLanguage(lang)) {
 						try {
 							return hljs.highlight(lang, string).value
-						} catch(e) {}
+						} catch(e) {} // eslint-disable-line no-empty
 					}
 
 					try {
 						return hljs.highlightAuto(string).value
-					} catch(e) {}
+					} catch(e) {} // eslint-disable-line no-empty
 
 					return ''
 				}

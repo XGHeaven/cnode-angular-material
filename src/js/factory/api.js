@@ -47,12 +47,12 @@ cnode.factory('API', ($http, $q, User, Msgbox, Setting) => {
 			}
 
 			switch(res.data.action) {
-				case 'up':
-					Msgbox.alert('点赞成功')
-					break
-				case 'down':
-					Msgbox.alert('取消点赞成功')
-					break
+			case 'up':
+				Msgbox.alert('点赞成功')
+				break
+			case 'down':
+				Msgbox.alert('取消点赞成功')
+				break
 			}
 			return res
 		}, res => {
@@ -102,7 +102,7 @@ cnode.factory('API', ($http, $q, User, Msgbox, Setting) => {
 			}
 			return res
 		}, res => {
-			Msgbox.alert(`获取消息失败...发生错误...`)
+			Msgbox.alert('获取消息失败...发生错误...')
 			return $q.reject(res)
 		})
 	})
@@ -133,7 +133,7 @@ cnode.factory('API', ($http, $q, User, Msgbox, Setting) => {
 			}
 			return $q.reject(res)
 		}).catch(err => {
-			Msgbox.alert('收藏失败');
+			Msgbox.alert('收藏失败')
 			return $q.reject(err)
 		})
 	})
@@ -149,7 +149,7 @@ cnode.factory('API', ($http, $q, User, Msgbox, Setting) => {
 			}
 			return $q.reject(res)
 		}).catch(err => {
-			Msgbox.alert('收藏失败');
+			Msgbox.alert('收藏失败')
 			return $q.reject(err)
 		})
 	})

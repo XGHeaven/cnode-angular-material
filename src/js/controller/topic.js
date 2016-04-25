@@ -11,16 +11,15 @@ cnode.controller('TopicController', ($scope, API, $state, User, Msgbox, hotkeys)
 		combo: 'r',
 		description: '回复当前帖子',
 		callback(event, hotkey) {
-			event.preventDefault();
-			console.log(hotkey);
-			$scope.focusReply();
+			event.preventDefault()
+			$scope.focusReply()
 		}
-	});
+	})
 	hotkeys.add({
 		combo: 'c',
-	 	description: '收藏当前帖子',
+		description: '收藏当前帖子',
 		callback(e, h) {
-			$scope.collect();
+			$scope.collect()
 		}
 	})
 
@@ -34,12 +33,12 @@ cnode.controller('TopicController', ($scope, API, $state, User, Msgbox, hotkeys)
 		reply.loading = true
 		API.postUps(reply.id).then(res => {
 			switch(res.data.action) {
-				case 'up':
-					reply.ups.push(User.user.id)
-					break
-				case 'down':
-					reply.ups.splice(reply.ups.indexOf(User.user.id), 1)
-					break
+			case 'up':
+				reply.ups.push(User.user.id)
+				break
+			case 'down':
+				reply.ups.splice(reply.ups.indexOf(User.user.id), 1)
+				break
 			}
 		}).finally(() => {
 			reply.loading = false
@@ -92,7 +91,7 @@ cnode.controller('TopicController', ($scope, API, $state, User, Msgbox, hotkeys)
 				$scope.collecting = false
 			})
 		}
-		$scope.collecting = true;
+		$scope.collecting = true
 	}
 
 	$scope.removeReplyFor = () => $scope.replyFor = void 0

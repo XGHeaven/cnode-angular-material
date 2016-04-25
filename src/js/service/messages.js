@@ -13,7 +13,7 @@ cnode.service('Message', function($timeout, $rootScope, API, Setting, Event){
 		status = false
 	}
 
-	this.check = check;
+	this.check = check
 
 	Event.$on('updatedUser', () => {
 		this.start()

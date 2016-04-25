@@ -45,7 +45,7 @@ cnode.factory('User', ($http, $q, $rootScope, $localStorage, Msgbox, Setting, Ev
 			defer.reject(err)
 		})
 
-		return defer.promise;
+		return defer.promise
 	}
 
 	function _userUpdating(...args) {

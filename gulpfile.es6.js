@@ -22,6 +22,7 @@ import plumber from 'gulp-plumber'
 import source from 'vinyl-source-stream'
 import ngAnnotate from 'gulp-ng-annotate'
 import gutil from 'gulp-util'
+import eslint from 'gulp-eslint'
 
 const PRODUCTION = process.env.NODE_ENV && process.env.NODE_ENV.toLowerCase() === 'production';
 const DIST = './dist'
@@ -162,11 +163,23 @@ gulp.task('server', ['build'], () => {
     })
 })
 
+function lint() {
+  return gulp
+  .src('src/**/*.js')
+  .pipe(eslint())
+  .pipe(eslint.format())
+  .pipe(eslint.failAfterError())
+}
+
+gulp.task('lint', lint)
+
 gulp.task('predeploy', () => {
     return gulp.src('CNAME').pipe(gulp.dest(DIST))
 })
 
-gulp.task('deploy', ['build', 'predeploy'], () => {
+gulp.task('lintBeforeDeploy', ['build', 'predeploy'], lint)
+
+gulp.task('deploy', ['lintBeforeDeploy'], () => {
     return gulp.src(DIST + '/**/*').pipe(ghPages())
 })
 
