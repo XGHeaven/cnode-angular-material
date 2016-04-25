@@ -1,6 +1,6 @@
 {
   "name": "cnodejs-material",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "a material design, power by angular",
   "main": "index.js",
   "scripts": {
