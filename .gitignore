@@ -7,3 +7,6 @@ jsconfig.json
 
 # for deploy
 .publish/
+
+# for mac
+.DS_Store
