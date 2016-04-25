@@ -2,7 +2,7 @@ md-list
 	div(ng-repeat-start="items in pages")
 	md-subheader(ng-if="!loadDisable") 第 {{$index+1}} 页
 	md-divider
-	md-list-item.md-3-line(ng-repeat="item in items" ng-click="open($event,item.id)" ng-class="{'md-whiteframe-z2': item.top}")
+	md-list-item.md-3-line(ng-repeat="item in items" ng-click="open($event,item.id)")
 		img.md-avatar(ng-src="{{item.author.avatar_url}}" ng-class="{'cn-avatar-top': item.top}")
 		.md-list-item-text(layout="column")
 			h3.cn-list-header
