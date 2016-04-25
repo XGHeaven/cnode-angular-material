@@ -37,7 +37,7 @@ gulp.task('es6', () => {
     // use gutil and console to pretty error output
     .on('error', err => gutil.log(err.message) & console.log(err.codeFrame))
     .pipe(plumber())
-    .pipe(source('app.js'))
+    .pipe(source('src/js/app.js'))
     .pipe(ngAnnotate())
     .pipe(condition(PRODUCTION, uglify()))
     .pipe(rename('app.js'))
