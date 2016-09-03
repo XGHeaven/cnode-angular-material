@@ -19,7 +19,7 @@
     "angular-messages": "^1.5.5",
     "angular-sanitize": "^1.5.5",
     "angular-ui-router": "^0.2.18",
-    "bootstrap": "^3.3.6",
+    "bootstrap": "^3.3.7",
     "font-awesome": "^4.6.1",
     "highlight.js": "^9.6.0",
     "marked": "^0.3.5",
