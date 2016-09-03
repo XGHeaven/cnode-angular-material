@@ -22,7 +22,7 @@
     "bootstrap": "^3.3.6",
     "font-awesome": "^4.6.1",
     "highlight.js": "^9.2.0",
-    "marked": "^0.3.5",
+    "marked": "^0.3.6",
     "ngstorage": "^0.3.10"
   },
   "devDependencies": {
