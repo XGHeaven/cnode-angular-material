@@ -26,7 +26,7 @@
     "ngstorage": "^0.3.10"
   },
   "devDependencies": {
-    "babel-core": "^6.8.0",
+    "babel-core": "^6.13.2",
     "babel-eslint": "^6.0.4",
     "babel-plugin-syntax-function-bind": "^6.5.0",
     "babel-plugin-transform-function-bind": "^6.5.2",
