@@ -41,7 +41,7 @@
     "gulp-concat": "^2.6.0",
     "gulp-eslint": "^2.0.0",
     "gulp-gh-pages": "^0.5.4",
-    "gulp-header": "^1.7.1",
+    "gulp-header": "^1.8.8",
     "gulp-if": "^2.0.0",
     "gulp-imagemin": "^3.0.3",
     "gulp-jade": "^1.1.0",
