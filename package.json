@@ -23,7 +23,7 @@
     "font-awesome": "^4.6.1",
     "highlight.js": "^9.6.0",
     "marked": "^0.3.5",
-    "ngstorage": "^0.3.10"
+    "ngstorage": "^0.3.11"
   },
   "devDependencies": {
     "babel-core": "^6.13.2",
