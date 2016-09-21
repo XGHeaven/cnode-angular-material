@@ -21,7 +21,7 @@
     "angular-ui-router": "^0.2.18",
     "bootstrap": "^3.3.7",
     "font-awesome": "^4.6.1",
-    "highlight.js": "^9.6.0",
+    "highlight.js": "^9.7.0",
     "marked": "^0.3.5",
     "ngstorage": "^0.3.11"
   },
