@@ -53,7 +53,7 @@
     "gulp-stylus": "^2.5.0",
     "gulp-uglify": "^2.0.0",
     "gulp-util": "^3.0.7",
-    "gulp-watch": "^4.3.9",
+    "gulp-watch": "^4.3.11",
     "jstransformer-marked": "^1.0.1",
     "require-globify": "^1.4.1",
     "rimraf": "^2.5.2",
