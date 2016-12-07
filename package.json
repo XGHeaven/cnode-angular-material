@@ -54,7 +54,7 @@
     "gulp-uglify": "^2.0.0",
     "gulp-util": "^3.0.7",
     "gulp-watch": "^4.3.9",
-    "jstransformer-marked": "^1.0.1",
+    "jstransformer-marked": "^1.0.2",
     "require-globify": "^1.4.1",
     "rimraf": "^2.5.2",
     "vinyl-source-stream": "^1.1.0"
